@@ -28,7 +28,7 @@ function App() {
         <Route path="blogs" element={<Blogs />}></Route>
         <Route path="my-portfolio" element={<MyPortfolio />}></Route>
         <Route path="dashboard" element={<Dashboard />}>
-          {/* Nested Route */}
+          {/* Nested Routes */}
           <Route index element={<MyOrders />}></Route>
           <Route path="add-review" element={<AddReview />}></Route>
           <Route path="my-profile" element={<MyProfile />}></Route>
