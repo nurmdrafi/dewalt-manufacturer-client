@@ -8,17 +8,56 @@ const AddProduct = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const addProduct = (data) => {
-    console.log(data);
-    reset();
+
+  const imageStorageKey = "d98b6ff521ce422ac940b964ee517658";
+
+  const handleAddProduct = async (data) => {
+    const image = data.image[0];
+    console.log(image);
+    const formData = new FormData();
+    formData.append("image", image);
+    console.log(formData)
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const product = {
+            name: data.name,
+            img: img,
+            description: data.description,
+            minimumQuantity: data.minimumQuantity,
+            availableQuantity: data.availableQuantity,
+            price: data.price,
+          };
+          fetch("http://localhost:5000/add-product", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(product),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if(inserted.insertedId){
+                  console.log(inserted)
+                //   Show toast message
+              }
+            });
+        }
+      });
   };
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center">
       <div className="card w-96 bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="card-title text-2xl font-bold">Add Product</h2>
           <form
-            onSubmit={handleSubmit(addProduct)}
+            onSubmit={handleSubmit(handleAddProduct)}
             className=" flex flex-col gap-3"
           >
             {/* Name */}
@@ -37,6 +76,26 @@ const AddProduct = () => {
               {errors.name?.type === "required" && (
                 <p className="text-error text-left  pt-2">
                   {errors.name.message}
+                </p>
+              )}
+            </div>
+
+            {/* Image */}
+            <div className="form-control min-w-[350px]">
+              <label className="text-left pb-1">Image</label>
+              <input
+                type="file"
+                className={`input input-bordered w-full ${
+                  errors.image && "input-error"
+                }`}
+                {...register("image", {
+                  required: "Please upload image",
+                })}
+              />
+              {/* Error Message */}
+              {errors.image?.type === "required" && (
+                <p className="text-error text-left  pt-2">
+                  {errors.image.message}
                 </p>
               )}
             </div>
