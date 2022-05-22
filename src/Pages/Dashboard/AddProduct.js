@@ -17,7 +17,7 @@ const AddProduct = () => {
     const formData = new FormData();
     formData.append("image", image);
     console.log(formData)
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageStorageKey}`;
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
       method: "POST",
       body: formData,
@@ -55,7 +55,7 @@ const AddProduct = () => {
     <div className="flex justify-center items-center">
       <div className="card w-96 bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-2xl font-bold">Add Product</h2>
+          <h2 className="card-title text-2xl font-bold">Add A Product</h2>
           <form
             onSubmit={handleSubmit(handleAddProduct)}
             className=" flex flex-col gap-3"
