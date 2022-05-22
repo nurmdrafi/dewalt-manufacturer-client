@@ -53,7 +53,7 @@ const AddProduct = () => {
   };
   return (
     <div className="flex justify-center items-center">
-      <div className="card w-96 bg-base-100 drop-shadow-lg">
+      <div className="card bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="card-title text-2xl font-bold">Add A Product</h2>
           <form
@@ -61,7 +61,7 @@ const AddProduct = () => {
             className=" flex flex-col gap-3"
           >
             {/* Name */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Name</label>
               <input
                 type="text"
@@ -81,7 +81,7 @@ const AddProduct = () => {
             </div>
 
             {/* Image */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Image</label>
               <input
                 type="file"
@@ -101,7 +101,7 @@ const AddProduct = () => {
             </div>
 
             {/* Description */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Description</label>
               <textarea
                 type="text"
@@ -121,7 +121,7 @@ const AddProduct = () => {
             </div>
 
             {/* Minimum Quantity */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control  lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Minimum Quantity</label>
               <input
                 type="number"
@@ -141,7 +141,7 @@ const AddProduct = () => {
             </div>
 
             {/* Available Quantity */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Available Quantity</label>
               <input
                 type="number"
@@ -161,7 +161,7 @@ const AddProduct = () => {
             </div>
 
             {/* Price Per Unit */}
-            <div className="form-control min-w-[350px]">
+            <div className="form-control lg:w-[500px] min-w-[350px]">
               <label className="text-left pb-1">Price Per Unit</label>
               <input
                 type="text"
