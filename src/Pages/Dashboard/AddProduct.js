@@ -16,7 +16,7 @@ const AddProduct = () => {
     console.log(image);
     const formData = new FormData();
     formData.append("image", image);
-    console.log(formData)
+    console.log(formData);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
       method: "POST",
@@ -38,15 +38,17 @@ const AddProduct = () => {
             method: "POST",
             headers: {
               "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
             body: JSON.stringify(product),
           })
             .then((res) => res.json())
             .then((result) => {
-              if(result.insertedId){
-                  console.log(result)
-                //   Show success message
-              } else{
+              if (result.insertedId) {
+                console.log(result);
+                reset();
+                // show success message
+              } else {
                 // show error message
               }
             });

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useStars } from "stars-rating-react-hooks";
+import auth from "../../firebase.init";
 
 const AddReview = () => {
+  const [user] = useAuthState(auth);
   // Star Ratings Config
   const config = {
     totalStars: 5,
@@ -34,23 +37,23 @@ const AddReview = () => {
       location: data.location,
       description: data.description,
     };
-    fetch("http://localhost:5000/add-review",{
+    fetch("http://localhost:5000/add-review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(review),
     })
-    .then(res => res.json())
-    .then(result =>{
-      if(result.insertedId){
-        console.log(result)
-        // show success message
-      } else{
-        // show error message
-      }
-
-    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          console.log(result);
+          // show success message
+        } else {
+          // show error message
+        }
+      });
     reset();
   };
 
@@ -67,6 +70,8 @@ const AddReview = () => {
                 type="text"
                 className={"input input-bordered w-full"}
                 {...register("name")}
+                defaultValue={user?.displayName}
+                readOnly
               />
             </div>
 
@@ -77,6 +82,8 @@ const AddReview = () => {
                 type="email"
                 className={"input input-bordered w-full"}
                 {...register("email")}
+                defaultValue={user?.email}
+                readOnly
               />
             </div>
 
@@ -102,15 +109,17 @@ const AddReview = () => {
 
             {/* Ratings */}
             <div className="form-control lg:w-[500px] min-w-[350px] my-4">
-
-              <span className="flex items-center"
+              <span
+                className="flex items-center"
                 {...getStarWrapperProps({
                   style: {
                     cursor: "pointer",
                   },
                 })}
               >
-                <label className="text-left pt-2 mr-4 lg:mr-24">Ratings: {selectingValue}/5</label>
+                <label className="text-left pt-2 mr-4 lg:mr-24">
+                  Ratings: {selectingValue}/5
+                </label>
                 {stars?.map((star, i) => (
                   <span
                     key={i}
