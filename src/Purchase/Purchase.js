@@ -42,7 +42,7 @@ const Purchase = () => {
         </p>
         <div className="card-actions justify-center">
           <button className="btn btn-primary rounded-none w-2/4 hover:bg-black hover:text-white my-6">
-            Buy Now
+            Book Now
           </button>
         </div>
       </div>

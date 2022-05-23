@@ -37,7 +37,7 @@ const Products = ({ product, refetch }) => {
             className="btn bg-primary rounded-none text-black hover:text-white w-full border-0"
             onClick={() => navigate(`/purchase/${product._id}`)}
           >
-            Buy Now
+            Book Now
           </button>
         </div>
       </div>
