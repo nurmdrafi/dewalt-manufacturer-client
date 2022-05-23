@@ -7,6 +7,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 
 const Register = () => {
   const {
@@ -84,19 +85,19 @@ const Register = () => {
         message: "Please confirm your password",
       });
     } else {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
-        // await console.log(data);
+      await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({ displayName: data.name });
+      // await console.log(data);
       reset();
     }
   };
-
+  const [token] = useToken(user || googleUser);
   // Navigate
   useEffect(() => {
-    if (user || googleUser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [from, navigate, user, googleUser]);
+  }, [from, navigate, token]);
 
   // Loading
   if (loading || googleLoading || updating) {
@@ -104,21 +105,21 @@ const Register = () => {
   }
 
   // User
-  if(user || googleUser){
-      // show toast message
+  if (user || googleUser) {
+    // show toast message
   }
 
   // Error
   if (error) {
-      // show toast message
+    // show toast message
     console.log(error.message);
   }
   if (googleError) {
-      // show toast message
+    // show toast message
     console.log(googleError.message);
   }
   if (updateError) {
-      // show toast message
+    // show toast message
     console.log(updateError.message);
   }
 
@@ -144,7 +145,7 @@ const Register = () => {
                 {...register("name", {
                   required: "Please enter your name",
                   minLength: {
-                    value: 6,
+                    value: 5,
                     message: "Please enter at least 6 characters",
                   },
                 })}
@@ -157,7 +158,7 @@ const Register = () => {
               )}
               {errors.name?.type === "minLength" && (
                 <p className="text-error text-left py-2">
-                  {errors.password.message}
+                  {errors.name.message}
                 </p>
               )}
             </div>
