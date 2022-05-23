@@ -1,10 +1,12 @@
 import React from "react";
+import Reviews from "./Reviews";
 import Tools from "./Tools";
 
 const Home = () => {
   return (
     <div>
-      <Tools/>
+      <Tools />
+      <Reviews />
     </div>
   );
 };

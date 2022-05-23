@@ -42,10 +42,12 @@ const AddProduct = () => {
             body: JSON.stringify(product),
           })
             .then((res) => res.json())
-            .then((inserted) => {
-              if(inserted.insertedId){
-                  console.log(inserted)
-                //   Show toast message
+            .then((result) => {
+              if(result.insertedId){
+                  console.log(result)
+                //   Show success message
+              } else{
+                // show error message
               }
             });
         }

@@ -1,20 +1,6 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
-import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import { useStars } from "stars-rating-react-hooks";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    borderRadius: "20px",
-  },
-};
 
 const AddReview = () => {
   // Star Ratings Config
@@ -31,7 +17,7 @@ const AddReview = () => {
     selectingValue,
     selectedValue,
   } = useStars(config);
-  const [modalIsOpen, setIsOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -39,154 +25,140 @@ const AddReview = () => {
     reset,
   } = useForm();
 
-  const {
-    isLoading,
-    error,
-    data: products,
-    refetch,
-  } = useQuery("products", () =>
-    fetch("http://localhost:5000/product").then((res) => res.json())
-  );
-  if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
-  }
-
-  // Modal
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   //   handleReviewButton
   const handleAddReview = (data) => {
     const review = {
-      user: "Unknown",
+      name: data.name,
+      email: data.email,
       ratings: selectedValue,
-      date: new Date().toDateString().slice(4),
+      location: data.location,
       description: data.description,
     };
-    console.log(review);
+    fetch("http://localhost:5000/add-review",{
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+    .then(res => res.json())
+    .then(result =>{
+      if(result.insertedId){
+        console.log(result)
+        // show success message
+      } else{
+        // show error message
+      }
+
+    })
     reset();
-    closeModal()
   };
 
   return (
-    <div>
-      <h2 className="text-center font-bold text-2xl mb-4">Add A Review</h2>
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full">
-          {/* <!-- head --> */}
-          <thead>
-            <tr>
-              <th className="text-center bg-primary">No.</th>
-              <th className="text-center bg-primary">Product Name</th>
-              <th className="text-center bg-primary">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product, index) => {
-              refetch();
-              return (
-                <tr key={index}>
-                  <td className="font-bold">{index + 1}</td>
-                  <td className="flex items-center">
-                    <img
-                      className="w-16 mr-4 rounded"
-                      src={product.img}
-                      alt={product.name}
-                    />
-                    {product.name}
-                  </td>
-                  <td>
-                    <button
-                      onClick={openModal}
-                      className="btn btn-xs btn-success"
-                    >
-                      Add Review
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+    <div className="flex justify-center items-center my-16">
+      <div className="card bg-slate-50 drop-shadow-lg">
+        <div className="card-body items-center text-center">
+          <h2 className="text-center font-bold text-2xl mb-4">Add A Review</h2>
+          <form onSubmit={handleSubmit(handleAddReview)}>
+            {/* Name */}
+            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+              <label className="text-left pb-1">Name</label>
+              <input
+                type="text"
+                className={"input input-bordered w-full"}
+                {...register("name")}
+              />
+            </div>
 
-      {/* Modal */}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Review Modal"
-        ariaHideApp={false}
-      >
-        <label
-          onClick={closeModal}
-          className="btn btn-sm btn-circle absolute right-2 top-2"
-        >
-          ✕
-        </label>
-        <form onSubmit={handleSubmit(handleAddReview)}>
-          {/* Ratings */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
-            <label className="text-left pb-1">Ratings {selectingValue}</label>
-          </div>
-          <span
-            {...getStarWrapperProps({
-              style: {
-                cursor: "pointer",
-              },
-            })}
-          >
-            {stars?.map((star, i) => (
-              <span
-                key={i}
-                {...getStarProps(i, {
+            {/* Email */}
+            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+              <label className="text-left pb-1">Email</label>
+              <input
+                type="email"
+                className={"input input-bordered w-full"}
+                {...register("email")}
+              />
+            </div>
+
+            {/* Location */}
+            <div className="form-control lg:w-[500px] min-w-[350px]">
+              <label className="text-left pb-1">Location</label>
+              <input
+                type="text"
+                className={`input input-bordered w-full ${
+                  errors.location && "input-error"
+                }`}
+                {...register("location", {
+                  required: "Please enter your location",
+                })}
+              />
+              {/* Error Message */}
+              {errors.location?.type === "required" && (
+                <p className="text-error text-left  pt-2">
+                  {errors.location.message}
+                </p>
+              )}
+            </div>
+
+            {/* Ratings */}
+            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+
+              <span className="flex items-center"
+                {...getStarWrapperProps({
                   style: {
-                    fontSize: "40px",
-                    color: "gold",
-                  },
-                  onClick: (event, ratedValue) => {
-                    // alert(`You just rated ${ratedValue} Stars!!`);
+                    cursor: "pointer",
                   },
                 })}
               >
-                {star}
+                <label className="text-left pt-2 mr-4 lg:mr-24">Ratings: {selectingValue}/5</label>
+                {stars?.map((star, i) => (
+                  <span
+                    key={i}
+                    {...getStarProps(i, {
+                      style: {
+                        fontSize: "40px",
+                        color: "gold",
+                      },
+                      onClick: (event, ratedValue) => {
+                        // alert(`You just rated ${ratedValue} Stars!!`);
+                      },
+                    })}
+                  >
+                    {star}
+                  </span>
+                ))}
               </span>
-            ))}
-          </span>
-          {/* Description */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
-            <label className="text-left pb-1">Description</label>
-            <textarea
-              type="text"
-              className={`textarea textarea-bordered w-full ${
-                errors.name && "textarea-error"
-              }`}
-              {...register("description", {
-                required: "Please enter description",
-              })}
-            />
-            {/* Error Message */}
-            {errors.description?.type === "required" && (
-              <p className="text-error text-left pt-2">
-                {errors.description.message}
-              </p>
-            )}
-          </div>
-          <div className="flex justify-center my-4">
-            <button
-              type="submit"
-              className="btn btn-primary hover:bg-black hover:text-white rounded-none"
-            >
-              Add Review
-            </button>
-          </div>
-        </form>
-      </Modal>
+            </div>
+            {/* Description */}
+            <div className="form-control lg:w-[500px] min-w-[350px]">
+              <label className="text-left pb-1">Description</label>
+              <textarea
+                type="text"
+                className={`textarea textarea-bordered w-full ${
+                  errors.name && "textarea-error"
+                }`}
+                {...register("description", {
+                  required: "Please enter description",
+                })}
+              />
+              {/* Error Message */}
+              {errors.description?.type === "required" && (
+                <p className="text-error text-left pt-2">
+                  {errors.description.message}
+                </p>
+              )}
+            </div>
+            <div className="flex justify-center my-4">
+              <button
+                type="submit"
+                className="btn btn-primary hover:bg-black hover:text-white rounded-none"
+              >
+                Add Review
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
