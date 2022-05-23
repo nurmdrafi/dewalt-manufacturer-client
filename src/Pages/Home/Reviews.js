@@ -27,15 +27,26 @@ const Reviews = () => {
         Reviews {reviews.length}
       </h2>
       <Swiper
-        slidesPerView={"auto"}
+        slidesPerView={3}
+        centeredSlides={true}
         spaceBetween={30}
         slidesPerGroup={1}
-        loop={true}
+        grabCursor={true}
+        loop={false}
         loopFillGroupWithBlank={true}
-        pagination={{
-            dynamicBullets: true,
-          }}
         modules={[Pagination]}
+        breakpoints={{
+          // when window width is >= 640px
+          475: {
+            width: 475,
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px
+          768: {
+            width: 768,
+            slidesPerView: 2,
+          },
+        }}
       >
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
