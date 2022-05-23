@@ -91,6 +91,7 @@ const Register = () => {
       reset();
     }
   };
+
   const [token] = useToken(user || googleUser);
   // Navigate
   useEffect(() => {
@@ -124,7 +125,7 @@ const Register = () => {
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center my-16">
       <div className="card w-96 bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Registration</h2>
@@ -271,9 +272,9 @@ const Register = () => {
           {/* Form End */}
 
           <p>
-            New to DeWalt?{" "}
-            <Link to="/login" className="text-secondary font-semibold">
-              Create new account
+            Already have an account?{" "}
+            <Link to="/login" className="text-secondary font-semibold underline">
+              Log In Here
             </Link>
           </p>
 
