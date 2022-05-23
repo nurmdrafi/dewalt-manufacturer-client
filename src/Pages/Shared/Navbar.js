@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../src/assets/images/dewalt-logo.png";
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   const MenuItems = (
     <>
       <li>
@@ -11,20 +15,26 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
-
       <li>
         <Link to="/my-portfolio">My Portfolio</Link>
       </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-
-      <li>
-        <button className="btn btn-ghost">Sign Out</button>
-      </li>
+      {user && (
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button className="btn btn-ghost" onClick={() => signOut(auth)}>
+              Sign Out
+            </button>
+          </li>
+        </>
+      )}
+      {!user && (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -64,24 +74,26 @@ const Navbar = () => {
         <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
       </div>
       <div className="navbar-end lg:hidden lg:flex">
-      <label htmlFor="dashboard-sidebar" className="btn btn-primary drawer-button lg:hidden">
-      <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-      </label>
+        <label
+          htmlFor="dashboard-sidebar"
+          className="btn btn-primary drawer-button lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
       </div>
-      
     </nav>
   );
 };
