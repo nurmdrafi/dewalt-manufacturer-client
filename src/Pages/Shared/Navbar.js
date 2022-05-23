@@ -22,7 +22,7 @@ const Navbar = () => {
       <li>
         <Link to="/my-portfolio">My Portfolio</Link>
       </li>
-      {user && (
+      {user ?
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -32,13 +32,10 @@ const Navbar = () => {
               Sign Out
             </button>
           </li>
-        </>
-      )}
-      {!user && (
-        <li>
+        </> : <li>
           <Link to="/login" className="btn btn-ghost">Login</Link>
         </li>
-      )}
+      }
     </>
   );
   return (

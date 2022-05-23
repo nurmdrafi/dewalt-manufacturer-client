@@ -16,6 +16,7 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Purchase from "./Purchase/Purchase";
+import RequireAuth from "./Pages/Auth/RequireAuth";
 
 function App() {
   return (
@@ -26,14 +27,21 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="home" element={<Home />}></Route>
-        <Route path="purchase/:_id" element={<Purchase/>}></Route>
+        <Route
+          path="purchase/:_id"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="blogs" element={<Blogs />}></Route>
         <Route path="my-portfolio" element={<MyPortfolio />}></Route>
         <Route path="dashboard" element={<Dashboard />}>
           {/* Nested Routes */}
-          <Route index element={<MyOrders />}></Route>
+          <Route index element={<MyProfile />}></Route>
+          <Route path="my-order" element={<MyOrders />}></Route>
           <Route path="add-review" element={<AddReview />}></Route>
-          <Route path="my-profile" element={<MyProfile />}></Route>
           <Route path="make-admin" element={<MakeAdmin />}></Route>
           <Route path="manage-orders" element={<ManageOrders />}></Route>
           <Route path="add-product" element={<AddProduct />}></Route>
