@@ -120,7 +120,7 @@ const AddReview = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Review Modal"
         ariaHideApp={false}
       >
         <label

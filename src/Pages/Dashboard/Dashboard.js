@@ -7,7 +7,6 @@ const Dashboard = () => {
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center ">
         {/* <!-- Page content here --> */}
-        <h1 className="text-3xl py-5 font-bold">Welcome to Dashboard</h1>
         <Outlet />
       </div>
       <div className="drawer-side">

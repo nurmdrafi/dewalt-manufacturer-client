@@ -20,7 +20,7 @@ const Tools = () => {
       <div className="flex flex-wrap justify-center gap-5">
         {products.slice(0,6).map((product) => (
           <Products
-            key={product.id}
+            key={product._id}
             product={product}
             refetch={refetch}
           ></Products>

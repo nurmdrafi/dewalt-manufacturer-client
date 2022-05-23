@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    maxWidth: "450px"
+  },
+};
 
 const ManageProducts = () => {
+  const [selectedId, setSelectedId] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
   const {
     isLoading,
     error,
@@ -13,6 +29,33 @@ const ManageProducts = () => {
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
+  // Modal
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setSelectedId("");
+  }
+
+  //   handle Delete Button
+  const handleDelete = () => {
+    fetch(`http://localhost:5000/product/${selectedId}`, {
+      method: "DELETE",
+    })
+    .then(res=> res.json())
+    .then(result =>{
+      if(result.deletedCount){
+        // show toast message
+      } else{
+        // show toast message
+      }
+    })
+    // refetch();
+    closeModal();
+  };
+  refetch();
   return (
     <div>
       <h2 className="text-center font-bold text-2xl mb-4">Manage Products</h2>
@@ -29,7 +72,6 @@ const ManageProducts = () => {
           </thead>
           <tbody>
             {products.map((product, index) => {
-              refetch();
               return (
                 <tr key={index}>
                   <td className="font-bold">{index + 1}</td>
@@ -43,7 +85,12 @@ const ManageProducts = () => {
                   </td>
                   <td className="text-center">{product.availableQuantity}</td>
                   <td>
-                    <button className="btn btn-xs btn-error">Delete</button>
+                    <button
+                      className="btn btn-xs btn-error"
+                      onClick={() => {openModal(); setSelectedId(product._id)}}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
@@ -51,6 +98,33 @@ const ManageProducts = () => {
           </tbody>
         </table>
       </div>
+      {/* Modal */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Delete Modal"
+        ariaHideApp={false}
+      >
+        <label
+          onClick={closeModal}
+          className="btn btn-sm btn-circle absolute right-2 top-2"
+        >
+          ✕
+        </label>
+            <div>
+              <h3 className="text-slate-900 text-3xl text-center my-4">Are You Sure?</h3>
+              <p className="flex-grow-0 text-center font-semibold text-slate-500">Do you really want to delete this item? This process cannot be undone.</p>
+            </div>
+        <div className="flex justify-center my-4 gap-12">
+        <button onClick={closeModal} type="submit" className="btn bg-warning text-black hover:text-white border-0 rounded-none">
+            Cancel
+          </button>
+          <button onClick={handleDelete} type="submit" className="btn btn-error text-white rounded-none">
+            Delete
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
