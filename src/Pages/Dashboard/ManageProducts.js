@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Modal from "react-modal";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -18,6 +21,7 @@ const customStyles = {
 const ManageProducts = () => {
   const [selectedId, setSelectedId] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
   const {
     isLoading,
     error,
@@ -48,18 +52,26 @@ const ManageProducts = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if(res.status === 401 || res.status === 403){
+          signOut(auth);
+          localStorage.removeItem('accessToken')
+          navigate('/login');
+        }
+        return res.json();
+      })
       .then((result) => {
         if (result.deletedCount) {
+          refetch();
           // show toast message
         } else {
           // show toast message
         }
       });
-    // refetch();
+    
     closeModal();
   };
-  refetch();
+  // refetch();
   return (
     <div>
       <h2 className="text-center font-bold text-2xl mb-4">Manage Products</h2>

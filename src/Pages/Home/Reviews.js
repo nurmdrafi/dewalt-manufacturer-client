@@ -20,7 +20,7 @@ const Reviews = () => {
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
-  refetch();
+  // refetch();
   return (
     <div>
       <h2 className="text-center font-bold text-3xl my-16">

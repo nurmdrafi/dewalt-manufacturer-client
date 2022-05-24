@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { signOut } from "firebase/auth";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useStars } from "stars-rating-react-hooks";
 import auth from "../../firebase.init";
 
@@ -27,6 +29,7 @@ const AddReview = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const navigate = useNavigate()
 
   //   handleReviewButton
   const handleAddReview = (data) => {
@@ -45,7 +48,14 @@ const AddReview = () => {
       },
       body: JSON.stringify(review),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if(res.status === 401 || res.status === 403){
+          signOut(auth);
+          localStorage.removeItem('accessToken')
+          navigate('/login');
+        }
+        return res.json();
+      })
       .then((result) => {
         if (result.insertedId) {
           console.log(result);

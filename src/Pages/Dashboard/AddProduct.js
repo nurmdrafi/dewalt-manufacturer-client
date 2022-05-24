@@ -1,5 +1,8 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const AddProduct = () => {
   const {
@@ -8,6 +11,7 @@ const AddProduct = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const navigate = useNavigate()
 
   const imageStorageKey = "d98b6ff521ce422ac940b964ee517658";
 
@@ -42,7 +46,14 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product),
           })
-            .then((res) => res.json())
+            .then((res) => {
+              if(res.status === 401 || res.status === 403){
+                signOut(auth);
+                localStorage.removeItem('accessToken')
+                navigate('/login');
+              }
+              return res.json();
+            })
             .then((result) => {
               if (result.insertedId) {
                 console.log(result);

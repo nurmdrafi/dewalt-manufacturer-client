@@ -1,9 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
+import { signOut } from "firebase/auth";
+import auth from "../firebase.init";
 
 const Purchase = () => {
   const { _id } = useParams();
+  const navigate = useNavigate()
   const {
     isLoading,
     error,
@@ -14,7 +17,14 @@ const Purchase = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => res.json())
+    }).then((res) => {
+      if(res.status === 401 || res.status === 403){
+        signOut(auth);
+        localStorage.removeItem('accessToken')
+        navigate('/login');
+      }
+      return res.json();
+    })
   );
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;

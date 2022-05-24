@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Modal from "react-modal";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -18,6 +21,7 @@ const customStyles = {
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const {
     isLoading,
     error,
@@ -29,7 +33,14 @@ const MakeAdmin = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => res.json())
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      return res.json();
+    })
   );
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
@@ -44,7 +55,6 @@ const MakeAdmin = () => {
     setIsOpen(false);
     setEmail("");
   }
-
   // Handle Make Admin
   const handleMakeAdmin = () => {
     fetch(`http://localhost:5000/user/admin/${email}`, {
@@ -52,8 +62,16 @@ const MakeAdmin = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      refetch();
+      return res.json();
     });
-    refetch();
+    closeModal();
   };
   return (
     <div>
@@ -70,14 +88,14 @@ const MakeAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
+            {users?.map((user, index) => {
               return (
                 <tr key={index}>
                   <td className="font-bold">{index + 1}</td>
 
-                  <td className="text-center">{user.email}</td>
+                  <td className="text-center">{user?.email}</td>
                   <td className="text-center">
-                    {user.role ? user.role : "user"}
+                    {user?.role ? user.role : "user"}
                   </td>
                   <td>
                     {!user.role && (
@@ -85,7 +103,7 @@ const MakeAdmin = () => {
                         className="btn btn-xs btn-warning"
                         onClick={() => {
                           openModal();
-                          setEmail(user.email);
+                          setEmail(user?.email);
                         }}
                       >
                         Make Admin

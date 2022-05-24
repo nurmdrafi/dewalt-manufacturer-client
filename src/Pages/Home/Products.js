@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Products = ({ product, refetch }) => {
   const navigate = useNavigate();
-  refetch();
+  // refetch();
   return (
     <div className="card max-w-[400px] bg-white shadow-xl">
       <div className="card-body text-center">
