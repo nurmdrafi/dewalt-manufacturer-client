@@ -74,7 +74,7 @@ const ManageProducts = () => {
   // refetch();
   return (
     <div>
-      <h2 className="text-center font-bold text-2xl mb-4">Manage Products</h2>
+      <h2 className="text-center font-bold text-2xl my-4">Manage Products</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* <!-- head --> */}
