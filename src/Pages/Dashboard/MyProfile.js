@@ -1,28 +1,69 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 
 const MyProfile = () => {
+  const [currentUser] = useAuthState(auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const [user] = useAuthState(auth);
+  const email = currentUser?.email;
+  const {
+    isLoading,
+    error,
+    data: user,
+    refetch,
+  } = useQuery(
+    "user",
+    () =>
+      email &&
+      fetch(`http://localhost:5000/user/${email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <p className="text-center font-bold text-4xl">Loading...</p>;
+  }
+
+  console.log(user);
 
   const handleUpdateProfile = async (data) => {
+    const profile = {
+      name: data.name,
+      education: data.education,
+      location: data.location,
+      number: data.number,
+      linkedin: data.linkedin,
+    };
+    fetch(`http://localhost:5000/update-user/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(profile),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
     console.log(data);
-    reset();
+    // reset();
   };
-  console.log(errors);
   return (
     <div>
       <h1 className="text-3xl text-center py-5 font-bold">
         Welcome to Dashboard
       </h1>
       <h2 className="text-center font-bold text-2xl my-4">My Profile</h2>
+
       <form
         onSubmit={handleSubmit(handleUpdateProfile)}
         className=" flex flex-col gap-3"
@@ -33,8 +74,8 @@ const MyProfile = () => {
           <input
             type="text"
             className={"input input-bordered w-full"}
-            defaultValue={user?.displayName}
-            readOnly
+            {...register("name")}
+            defaultValue={currentUser?.displayName}
           />
         </div>
 
@@ -44,7 +85,7 @@ const MyProfile = () => {
           <input
             type="email"
             className={"input input-bordered w-full"}
-            defaultValue={user?.email}
+            defaultValue={currentUser?.email}
             readOnly
           />
         </div>
@@ -60,6 +101,7 @@ const MyProfile = () => {
             {...register("education", {
               required: "Please enter your education level",
             })}
+            defaultValue={user?.education}
           />
           {/* Error Message */}
           {errors.education?.type === "required" && (
@@ -80,6 +122,7 @@ const MyProfile = () => {
             {...register("location", {
               required: "Please enter your location",
             })}
+            defaultValue={user?.location}
           />
           {/* Error Message */}
           {errors.location?.type === "required" && (
@@ -100,6 +143,7 @@ const MyProfile = () => {
             {...register("number", {
               required: "Please enter your number",
             })}
+            defaultValue={user?.number}
           />
           {/* Error Message */}
           {errors.number?.type === "required" && (
@@ -123,6 +167,7 @@ const MyProfile = () => {
                 message: "Please enter valid url",
               },
             })}
+            defaultValue={user?.linkedin}
           />
           {/* Error Message */}
           {errors.linkedin?.type === "required" && (
@@ -142,7 +187,7 @@ const MyProfile = () => {
           type="submit"
           className="btn btn-primary uppercase min-w-[350px]"
         >
-          Update
+          Save
         </button>
       </form>
     </div>

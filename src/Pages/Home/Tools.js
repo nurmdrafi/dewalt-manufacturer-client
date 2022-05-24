@@ -22,7 +22,6 @@ const Tools = () => {
           <Products
             key={product._id}
             product={product}
-            refetch={refetch}
           ></Products>
         ))}
       </div>

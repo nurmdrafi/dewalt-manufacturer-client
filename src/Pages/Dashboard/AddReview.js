@@ -29,7 +29,7 @@ const AddReview = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //   handleReviewButton
   const handleAddReview = (data) => {
@@ -49,10 +49,10 @@ const AddReview = () => {
       body: JSON.stringify(review),
     })
       .then((res) => {
-        if(res.status === 401 || res.status === 403){
+        if (res.status === 401 || res.status === 403) {
           signOut(auth);
-          localStorage.removeItem('accessToken')
-          navigate('/login');
+          localStorage.removeItem("accessToken");
+          navigate("/login");
         }
         return res.json();
       })
@@ -80,7 +80,7 @@ const AddReview = () => {
                 type="text"
                 className={"input input-bordered w-full"}
                 {...register("name")}
-                defaultValue={user?.displayName}
+                value={user?.displayName}
                 readOnly
               />
             </div>
@@ -92,7 +92,7 @@ const AddReview = () => {
                 type="email"
                 className={"input input-bordered w-full"}
                 {...register("email")}
-                defaultValue={user?.email}
+                value={user?.email}
                 readOnly
               />
             </div>
