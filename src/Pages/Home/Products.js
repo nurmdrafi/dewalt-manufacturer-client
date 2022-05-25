@@ -19,7 +19,7 @@ const Products = ({ product }) => {
           <span className="font-bold text-2xl mr-2">
             {product.minimumQuantity} Units
           </span>
-          <span className="font-semibold text-slate-500">Minimum Order</span>
+          <span className="font-semibold text-slate-500">Minimum Order Quantity</span>
         </p>
         <p className="text-left flex-grow-0">
           <span className="font-bold text-2xl mr-2">

@@ -137,7 +137,7 @@ const AddProduct = () => {
 
             {/* Minimum Quantity */}
             <div className="form-control  lg:w-[500px] min-w-[350px]">
-              <label className="text-left pb-1">Minimum Quantity</label>
+              <label className="text-left pb-1">Minimum Order Quantity</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
