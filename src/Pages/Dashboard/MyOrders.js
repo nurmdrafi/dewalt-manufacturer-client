@@ -5,6 +5,7 @@ import auth from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
+import toast, { Toaster } from "react-hot-toast";
 
 const customStyles = {
   content: {
@@ -43,7 +44,7 @@ const MyOrders = () => {
     "orders",
     () =>
       email &&
-      fetch(`http://localhost:5000/order/${email}`, {
+      fetch(`http://localhost:5000/orders/${email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -60,51 +61,108 @@ const MyOrders = () => {
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
-  if(!orders){
-    refetch()
+  if (!orders) {
+    refetch();
   }
-  console.log(orders)
   const handleDelete = () => {
-    console.log(selectedId)
+    fetch(`http://localhost:5000/delete-order/${selectedId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
+      .then((result) => {
+        if (result.deletedCount) {
+          refetch();
+          closeModal();
+          toast.success("Order canceled successfully");
+        }
+      });
   };
   return (
     <div>
+      <Toaster position="top-right" reverseOrder={false} />
       <h2 className="text-center font-bold text-2xl my-4">My Orders</h2>
-      <div className=" w-full">
-        <table className="table w-full">
+      <div>
+        <table className="table-auto border-separate">
           {/* <!-- head --> */}
           <thead>
             <tr>
-              <th className="text-center bg-primary">No.</th>
-              <th className="text-center bg-primary">Product Name</th>
-              <th className="text-center bg-primary">Status</th>
-              <th className="text-center bg-primary">Action</th>
+              <th className="text-center bg-primary p-3 mx-2">No.</th>
+              <th className="text-center bg-primary p-3 mx-2">Product Name</th>
+              <th className="text-center bg-primary p-3 mx-2">QTY</th>
+              <th className="text-center bg-primary p-3 mx-2">Amount</th>
+              <th className="text-center bg-primary p-3 mx-2">
+                Transaction Id
+              </th>
+              <th className="text-center bg-primary p-3 mx-2">
+                Payment Status
+              </th>
+              <th className="text-center bg-primary p-3 mx-2">Action</th>
             </tr>
           </thead>
           <tbody>
             {orders?.map((order, index) => {
               return (
                 <tr key={index}>
-                  <td className="font-bold">{index + 1}</td>
-                  <td className="flex items-center">
+                  {/* Serial */}
+                  <td className="font-bold text-center border-b-2">
+                    {index + 1}
+                  </td>
+                  {/* Img & Name */}
+                  <td className="flex items-center flex-wrap">
                     <img
                       className="w-16 mr-4 rounded"
                       src={order.img}
                       alt={order.productName}
                     />
-                    {order.productName}
+                    <span>{order.productName}</span>
                   </td>
-                  <td className="text-center"><p>{order.paymentStatus}</p></td>
-                  <td>
+                  {/* QTY */}
+                  <td className="text-center">{order.quantity}</td>
+                  {/* Amount */}
+                  <td className="text-center">{order.price}</td>
+                  <td className="text-center">
+                    {order.transactionId || "N/A"}
+                  </td>
+                  {/* Payment Status */}
+                  <td className="text-center">
                     <button
-                      className="btn btn-xs btn-error"
-                      onClick={() => {
-                        openModal();
-                        setSelectedId(order._id);
-                      }}
+                      className={`btn btn-xs text-white hover:bg-error border-0 ${
+                        order.paymentStatus === "unpaid" && "bg-error"
+                      } ${order.paymentStatus === "paid" && "bg-success"}`}
                     >
-                      Delete
+                      {order.paymentStatus}
                     </button>
+                  </td>
+                  <td>
+                    {order.paymentStatus === "unpaid" && (
+                      <div className="flex flex-col gap-2">
+                        <button
+                          className="btn btn-xs btn-success whitespace-nowrap"
+                          onClick={() => navigate(`/payment/${order._id}`)}
+                        >
+                          Pay Now
+                        </button>
+                        <button
+                          className="btn btn-xs btn-error text-white"
+                          onClick={() => {
+                            openModal();
+                            setSelectedId(order._id);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               );

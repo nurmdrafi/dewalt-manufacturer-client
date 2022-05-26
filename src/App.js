@@ -16,6 +16,7 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Purchase from "./Purchase/Purchase";
+import Payment from "./Pages/Dashboard/Payment.js";
 import RequireAuth from "./Pages/Auth/RequireAuth";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="payment/:_id" element={<Payment />}></Route>
         <Route path="blogs" element={<Blogs />}></Route>
         <Route path="my-portfolio" element={<MyPortfolio />}></Route>
         <Route path="dashboard" element={<Dashboard />}>

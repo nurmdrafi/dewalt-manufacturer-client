@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../hooks/useAdmin";
 
 const Products = ({ product }) => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   const navigate = useNavigate();
   return (
     <div className="card max-w-[400px] bg-white shadow-xl">
@@ -34,7 +39,7 @@ const Products = ({ product }) => {
         <div className="card-actions justify-center">
           <button
             className="btn bg-primary rounded-none text-black hover:text-white w-full border-0"
-            onClick={() => navigate(`/purchase/${product._id}`)}
+            onClick={() => !admin && navigate(`/purchase/${product._id}`)}
           >
             Book Now
           </button>

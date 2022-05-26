@@ -92,6 +92,7 @@ const Purchase = () => {
         userName: data.name,
         userEmail: data.email,
         quantity: data.quantity,
+        price: `${data.quantity * price}`,
         address: data.address,
         contact: data.contact,
         paymentStatus: "unpaid",
@@ -139,7 +140,7 @@ const Purchase = () => {
       <div className="card lg:card-side">
         <Toaster position="top-right" reverseOrder={false} />
         <figure className="lg:w-1/2">
-          <img src={img} alt="Album" />
+          <img src={img} alt="Album" className="w-[400px]" />
         </figure>
         <div className="card-body lg:w-1/2">
           <h2 className="card-title text-4xl my-2">{productName}</h2>

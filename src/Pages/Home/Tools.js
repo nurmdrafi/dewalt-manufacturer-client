@@ -19,10 +19,7 @@ const Tools = () => {
       <h2 className="text-center font-bold text-3xl my-16">Tools</h2>
       <div className="flex flex-wrap justify-center gap-5">
         {products.map((product) => (
-          <Products
-            key={product._id}
-            product={product}
-          ></Products>
+          <Products key={product._id} product={product}></Products>
         ))}
       </div>
     </div>
