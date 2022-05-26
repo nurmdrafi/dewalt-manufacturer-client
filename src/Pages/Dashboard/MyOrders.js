@@ -44,7 +44,7 @@ const MyOrders = () => {
     "orders",
     () =>
       email &&
-      fetch(`http://localhost:5000/orders/${email}`, {
+      fetch(`https://delware-manufacturer.herokuapp.com/orders/${email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -64,15 +64,16 @@ const MyOrders = () => {
   if (!orders) {
     refetch();
   }
-  console.log(orders)
-  console.log(selectedId)
   const handleDelete = () => {
-    fetch(`http://localhost:5000/delete-order/${selectedId}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://delware-manufacturer.herokuapp.com/delete-order/${selectedId}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);

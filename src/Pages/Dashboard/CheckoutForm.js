@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+import toast, { Toaster } from "react-hot-toast";
 
 const CheckoutForm = ({ product }) => {
   const stripe = useStripe();
@@ -12,6 +13,7 @@ const CheckoutForm = ({ product }) => {
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const navigate = useNavigate();
+  
 
   const { _id, price, userName, userEmail } = product;
 
@@ -24,14 +26,17 @@ const CheckoutForm = ({ product }) => {
     "payment",
     () =>
       price &&
-      fetch(`http://localhost:5000/create-payment-intent`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ price }),
-      })
+      fetch(
+        `https://delware-manufacturer.herokuapp.com/create-payment-intent`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify({ price }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data?.clientSecret) {
@@ -39,8 +44,8 @@ const CheckoutForm = ({ product }) => {
           }
         })
   );
-  if(isLoading){
-      return <p></p>
+  if (isLoading) {
+    return <p></p>;
   }
 
   const handleSubmit = async (event) => {
@@ -83,7 +88,6 @@ const CheckoutForm = ({ product }) => {
     } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
-      console.log(paymentIntent);
       setSuccess("Congrats! Your payment is completed.");
 
       //store payment on database
@@ -91,7 +95,7 @@ const CheckoutForm = ({ product }) => {
         product: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/orders/${_id}`, {
+      fetch(`https://delware-manufacturer.herokuapp.com/orders/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -103,7 +107,7 @@ const CheckoutForm = ({ product }) => {
         .then((data) => {
           setProcessing(false);
           if (data.modifiedCount > 0) {
-            // show success
+            toast.success("Payment successfull")
             navigate("/dashboard/my-order");
           }
         });
@@ -111,6 +115,7 @@ const CheckoutForm = ({ product }) => {
   };
   return (
     <>
+    <Toaster position="top-right" reverseOrder={false} />
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{

@@ -9,7 +9,9 @@ const Tools = () => {
     data: products,
     refetch,
   } = useQuery("products", () =>
-    fetch("http://localhost:5000/product").then((res) => res.json())
+    fetch("https://delware-manufacturer.herokuapp.com/product").then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;

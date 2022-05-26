@@ -41,7 +41,7 @@ const ManageOrders = () => {
     data: orders,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/orders`, {
+    fetch(`https://delware-manufacturer.herokuapp.com/orders`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -61,12 +61,15 @@ const ManageOrders = () => {
 
   //   handle Delete Button
   const handleDelete = () => {
-    fetch(`http://localhost:5000/delete-order/${selectedId}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://delware-manufacturer.herokuapp.com/delete-order/${selectedId}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);
@@ -86,7 +89,7 @@ const ManageOrders = () => {
   };
 
   const handleDelivery = (id) => {
-    fetch(`http://localhost:5000/delivery/${id}`, {
+    fetch(`https://delware-manufacturer.herokuapp.com/delivery/${id}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

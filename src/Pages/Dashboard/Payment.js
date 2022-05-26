@@ -20,7 +20,7 @@ const Payment = () => {
     "order",
     () =>
       _id &&
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://delware-manufacturer.herokuapp.com/order/${_id}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -41,9 +41,7 @@ const Payment = () => {
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
-  // if(!order){
-  //   refetch()
-  // }
+
   return (
     <div className="flex flex-col items-center">
       <div className="card w-[500px] bg-base-100 shadow-xl my-12">

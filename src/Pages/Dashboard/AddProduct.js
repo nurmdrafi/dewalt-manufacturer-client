@@ -37,7 +37,7 @@ const AddProduct = () => {
             availableQuantity: data.availableQuantity,
             price: data.price,
           };
-          fetch("http://localhost:5000/add-product", {
+          fetch("https://delware-manufacturer.herokuapp.com/add-product", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useStars } from "stars-rating-react-hooks";
 import auth from "../../firebase.init";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddReview = () => {
   const [user] = useAuthState(auth);
@@ -40,7 +41,7 @@ const AddReview = () => {
       location: data.location,
       description: data.description,
     };
-    fetch("http://localhost:5000/add-review", {
+    fetch("https://delware-manufacturer.herokuapp.com/add-review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -59,9 +60,9 @@ const AddReview = () => {
       .then((result) => {
         if (result.insertedId) {
           console.log(result);
-          // show success message
+          toast.success("Successfully add a review")
         } else {
-          // show error message
+          toast.error("Failed to add a review")
         }
       });
     reset();
@@ -69,6 +70,7 @@ const AddReview = () => {
 
   return (
     <div className="flex justify-center items-center my-16">
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="card bg-slate-50 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="text-center font-bold text-2xl mb-4">Add A Review</h2>

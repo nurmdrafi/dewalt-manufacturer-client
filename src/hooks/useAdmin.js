@@ -10,7 +10,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`http://localhost:5000/admin/${email}`, {
+      fetch(`https://delware-manufacturer.herokuapp.com/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -18,10 +18,10 @@ const useAdmin = (user) => {
         },
       })
         .then((res) => {
-          if(res.status === 401 || res.status === 403){
+          if (res.status === 401 || res.status === 403) {
             signOut(auth);
-            localStorage.removeItem('accessToken')
-            navigate('/login');
+            localStorage.removeItem("accessToken");
+            navigate("/login");
           }
           return res.json();
         })

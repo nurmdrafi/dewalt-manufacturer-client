@@ -46,7 +46,7 @@ const Purchase = () => {
     error,
     data: product,
   } = useQuery("product", () =>
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://delware-manufacturer.herokuapp.com/product/${_id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -97,7 +97,7 @@ const Purchase = () => {
         paymentStatus: "unpaid",
         deliveryStatus: "pending",
       };
-      await fetch(`http://localhost:5000/add-order`, {
+      await fetch(`https://delware-manufacturer.herokuapp.com/add-order`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -46,7 +46,7 @@ const MyProfile = () => {
     "user",
     () =>
       email &&
-      fetch(`http://localhost:5000/user/${email}`, {
+      fetch(`https://delware-manufacturer.herokuapp.com/user/${email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -84,14 +84,17 @@ const MyProfile = () => {
       linkedin: data.linkedin,
     };
     await updateProfile({ displayName: data.name });
-    await fetch(`http://localhost:5000/update-user/${email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(profile),
-    })
+    await fetch(
+      `https://delware-manufacturer.herokuapp.com/update-user/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(profile),
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);
@@ -109,8 +112,8 @@ const MyProfile = () => {
     // console.log(data);
     closeModal();
   };
-  if(!user){
-    refetch()
+  if (!user) {
+    refetch();
   }
 
   // Updating
@@ -118,7 +121,6 @@ const MyProfile = () => {
     return <p>Loading...</p>;
   }
   if (updateError) {
-    // show toast message
     toast.error(updateError.message);
   }
 

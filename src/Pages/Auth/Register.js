@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -107,25 +108,23 @@ const Register = () => {
 
   // User
   if (user || googleUser) {
-    // show toast message
+    toast.success("Successfully logged in")
   }
 
   // Error
   if (error) {
-    // show toast message
-    console.log(error.message);
+    toast.error(error.message);
   }
   if (googleError) {
-    // show toast message
-    console.log(googleError.message);
+    toast.error(googleError.message);
   }
   if (updateError) {
-    // show toast message
-    console.log(updateError.message);
+    toast.error(updateError.message);
   }
 
   return (
     <div className="flex justify-center items-center my-16">
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="card w-96 bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Registration</h2>
