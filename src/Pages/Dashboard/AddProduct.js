@@ -123,7 +123,7 @@ const AddProduct = () => {
               <textarea
                 type="text"
                 className={`textarea textarea-bordered w-full ${
-                  errors.name && "textarea-error"
+                  errors.description && "textarea-error"
                 }`}
                 {...register("description", {
                   required: "Please enter product description",
