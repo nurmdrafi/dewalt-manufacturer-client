@@ -21,7 +21,7 @@ const customStyles = {
 const ManageProducts = () => {
   const [selectedId, setSelectedId] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     isLoading,
     error,
@@ -53,10 +53,10 @@ const ManageProducts = () => {
       },
     })
       .then((res) => {
-        if(res.status === 401 || res.status === 403){
+        if (res.status === 401 || res.status === 403) {
           signOut(auth);
-          localStorage.removeItem('accessToken')
-          navigate('/login');
+          localStorage.removeItem("accessToken");
+          navigate("/login");
         }
         return res.json();
       })
@@ -68,7 +68,7 @@ const ManageProducts = () => {
           // show toast message
         }
       });
-    
+
     closeModal();
   };
   // refetch();

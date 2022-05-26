@@ -18,7 +18,7 @@ const Tools = () => {
     <div className="max-w-7xl mx-auto">
       <h2 className="text-center font-bold text-3xl my-16">Tools</h2>
       <div className="flex flex-wrap justify-center gap-5">
-        {products.slice(0,6).map((product) => (
+        {products.map((product) => (
           <Products
             key={product._id}
             product={product}

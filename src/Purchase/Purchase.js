@@ -87,16 +87,20 @@ const Purchase = () => {
     } else {
       const order = {
         productName: productName,
+        _id: _id,
+        img: img,
         userName: data.name,
         userEmail: data.email,
         quantity: data.quantity,
         address: data.address,
         contact: data.contact,
-        status: "unpaid",
+        paymentStatus: "unpaid",
+        deliveryStatus: "pending",
       };
       await fetch(`http://localhost:5000/add-order`, {
         method: "POST",
         headers: {
+          "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(order),
@@ -123,8 +127,12 @@ const Purchase = () => {
       <div className="card w-full flex items-end rounded-none">
         <div className="shadow-md bg-slate-200 p-4 rounded-2xl">
           <div className="card-actions justify-end"></div>
-          <h6><span className="font-bold">Name:</span> {user?.displayName}</h6>
-          <h6><span className="font-bold">Email:</span> {user?.email}</h6>
+          <h6>
+            <span className="font-bold">Name:</span> {user?.displayName}
+          </h6>
+          <h6>
+            <span className="font-bold">Email:</span> {user?.email}
+          </h6>
         </div>
       </div>
       {/* Product + Booking Information */}
@@ -170,6 +178,12 @@ const Purchase = () => {
               onClick={openModal}
             >
               Book Now
+            </button>
+            <button
+              className="btn btn-success rounded-none w-2/4 text-black my-6 hover:bg-black hover:text-white border-0"
+              onClick={() => navigate("/dashboard/my-order")}
+            >
+              My Orders
             </button>
           </div>
         </div>

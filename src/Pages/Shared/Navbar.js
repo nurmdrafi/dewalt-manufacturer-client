@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../src/assets/images/dewalt-logo.png";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -69,8 +68,9 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/home">
-          <div className="w-[150px]">
-            <img src={logo} alt="DeWalt Logo" />
+          <div className="w-[250px]">
+            <h2 className="font-extrabold text-4xl font-serif">Delware</h2>
+            <h4 className="font-semibold">Manufacturer & Supplier</h4>
           </div>
         </Link>
       </div>

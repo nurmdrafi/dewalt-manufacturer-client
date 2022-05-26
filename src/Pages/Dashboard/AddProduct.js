@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
@@ -11,16 +12,14 @@ const AddProduct = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const imageStorageKey = "d98b6ff521ce422ac940b964ee517658";
 
   const handleAddProduct = async (data) => {
     const image = data.image[0];
-    console.log(image);
     const formData = new FormData();
     formData.append("image", image);
-    console.log(formData);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
       method: "POST",
@@ -47,20 +46,19 @@ const AddProduct = () => {
             body: JSON.stringify(product),
           })
             .then((res) => {
-              if(res.status === 401 || res.status === 403){
+              if (res.status === 401 || res.status === 403) {
                 signOut(auth);
-                localStorage.removeItem('accessToken')
-                navigate('/login');
+                localStorage.removeItem("accessToken");
+                navigate("/login");
               }
               return res.json();
             })
             .then((result) => {
               if (result.insertedId) {
-                console.log(result);
                 reset();
-                // show success message
+                toast.success("Product added successfully");
               } else {
-                // show error message
+                toast.error("Product didn't upload");
               }
             });
         }
@@ -68,6 +66,7 @@ const AddProduct = () => {
   };
   return (
     <div className="flex justify-center items-center">
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="card bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
           <h2 className="card-title text-2xl font-bold">Add A Product</h2>
@@ -100,9 +99,8 @@ const AddProduct = () => {
               <label className="text-left pb-1">Image</label>
               <input
                 type="file"
-                className={`input input-bordered w-full ${
-                  errors.image && "input-error"
-                }`}
+                className={`input input-bordered w-full 
+                 ${errors.image && "input-error"}`}
                 {...register("image", {
                   required: "Please upload image",
                 })}
