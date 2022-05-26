@@ -97,17 +97,16 @@ const Login = () => {
     return <p>Loading...</p>;
   }
 
-  // User
-  if (user || googleUser) {
-    toast.success("Successfully logged in")
-  }
-
   // Error
   if (error) {
-    toast.error(error.message);
+    toast.error(error.message, {
+      id: "signin error"
+    });
   }
   if (googleError) {
-    toast.error(googleError.message);
+    toast.error(googleError.message, {
+      id: "google error"
+    });
   }
 
   return (

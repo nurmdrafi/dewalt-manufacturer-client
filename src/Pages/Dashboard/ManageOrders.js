@@ -81,7 +81,9 @@ const ManageOrders = () => {
       .then((result) => {
         if (result.deletedCount) {
           refetch();
-          toast.success("Order deleted successfully");
+          toast.success("Order deleted successfully", {
+            id: "delete success"
+          });
         }
       });
 
@@ -105,7 +107,9 @@ const ManageOrders = () => {
       })
       .then((data) => {
         if (data.modifiedCount) {
-          toast.success("Order delivered successfully");
+          toast.success("Order delivered successfully", {
+            id: "delivered success"
+          });
           refetch();
         }
       });

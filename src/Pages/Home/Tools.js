@@ -17,14 +17,14 @@ const Tools = () => {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
   return (
-    <div className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto">
       <h2 className="text-center font-bold text-3xl my-16">Tools</h2>
       <div className="flex flex-wrap justify-center gap-5">
         {products.map((product) => (
           <Products key={product._id} product={product}></Products>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

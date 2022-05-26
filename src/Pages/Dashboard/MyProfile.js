@@ -106,7 +106,9 @@ const MyProfile = () => {
       .then((result) => {
         if (result.modifiedCount) {
           refetch();
-          toast.success("Successfully updated!");
+          toast.success("Successfully updated!", {
+            id: "update success"
+          });
         }
       });
     // console.log(data);
@@ -121,7 +123,9 @@ const MyProfile = () => {
     return <p>Loading...</p>;
   }
   if (updateError) {
-    toast.error(updateError.message);
+    toast.error(updateError.message, {
+      id: "update error"
+    });
   }
 
   return (

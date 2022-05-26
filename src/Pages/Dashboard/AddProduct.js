@@ -56,9 +56,13 @@ const AddProduct = () => {
             .then((result) => {
               if (result.insertedId) {
                 reset();
-                toast.success("Product added successfully");
+                toast.success("Product added successfully" ,{
+                  id: "add success"
+                });
               } else {
-                toast.error("Product didn't upload");
+                toast.error("Product didn't upload", {
+                  id: "add error"
+                });
               }
             });
         }

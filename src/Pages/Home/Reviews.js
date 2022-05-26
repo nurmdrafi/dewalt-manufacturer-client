@@ -24,7 +24,7 @@ const Reviews = () => {
   }
   // refetch();
   return (
-    <div>
+    <section>
       <h2 className="text-center font-bold text-3xl my-16">
         Reviews {reviews.length}
       </h2>
@@ -56,7 +56,7 @@ const Reviews = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
 

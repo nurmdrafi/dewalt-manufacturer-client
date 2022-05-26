@@ -60,9 +60,13 @@ const AddReview = () => {
       .then((result) => {
         if (result.insertedId) {
           console.log(result);
-          toast.success("Successfully add a review")
+          toast.success("Successfully add a review", {
+            id: "add success"
+          })
         } else {
-          toast.error("Failed to add a review")
+          toast.error("Failed to add a review", {
+            id: "add error"
+          })
         }
       });
     reset();
