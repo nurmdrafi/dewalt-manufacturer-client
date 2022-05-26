@@ -64,6 +64,8 @@ const MyOrders = () => {
   if (!orders) {
     refetch();
   }
+  console.log(orders)
+  console.log(selectedId)
   const handleDelete = () => {
     fetch(`http://localhost:5000/delete-order/${selectedId}`, {
       method: "DELETE",
@@ -147,7 +149,7 @@ const MyOrders = () => {
                     {order.paymentStatus === "unpaid" && (
                       <div className="flex flex-col gap-2">
                         <button
-                          className="btn btn-xs btn-success whitespace-nowrap"
+                          className="btn btn-xs btn-success text-white whitespace-nowrap"
                           onClick={() => navigate(`/payment/${order._id}`)}
                         >
                           Pay Now
@@ -155,8 +157,8 @@ const MyOrders = () => {
                         <button
                           className="btn btn-xs btn-error text-white"
                           onClick={() => {
-                            openModal();
                             setSelectedId(order._id);
+                            openModal();
                           }}
                         >
                           Cancel

@@ -87,7 +87,6 @@ const Purchase = () => {
     } else {
       const order = {
         productName: productName,
-        _id: _id,
         img: img,
         userName: data.name,
         userEmail: data.email,

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -23,6 +24,7 @@ const ManageOrders = () => {
   const [selectedId, setSelectedId] = useState("");
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+
   // Modal
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -56,8 +58,59 @@ const ManageOrders = () => {
   if (isLoading) {
     return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
+
+  //   handle Delete Button
+  const handleDelete = () => {
+    fetch(`http://localhost:5000/delete-order/${selectedId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
+      .then((result) => {
+        if (result.deletedCount) {
+          refetch();
+          toast.success("Order deleted successfully");
+        }
+      });
+
+    closeModal();
+  };
+
+  const handleDelivery = (id) => {
+    fetch(`http://localhost:5000/delivery/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data.modifiedCount) {
+          toast.success("Order delivered successfully");
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
+      <Toaster position="top-right" reverseOrder={false} />
       <h2 className="text-center font-bold text-2xl my-4">Manage All Orders</h2>
       <div>
         <table className="table-auto border-separate">
@@ -112,9 +165,15 @@ const ManageOrders = () => {
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className={`btn btn-xs text-white ${order.deliveryStatus === "pending" && "btn-warning"} ${order.deliveryStatus === "shipped" && "bg-success"}`}>{order.deliveryStatus}</button>
+                    <button
+                      className={`btn btn-xs text-white ${
+                        order.deliveryStatus === "pending" && "btn-warning"
+                      } ${order.deliveryStatus === "shipped" && "bg-success"}`}
+                    >
+                      {order.deliveryStatus}
+                    </button>
                   </td>
-                  <td>
+                  <td className="text-center">
                     {order.paymentStatus === "unpaid" && (
                       <button
                         className="btn btn-xs btn-error text-white"
@@ -123,9 +182,20 @@ const ManageOrders = () => {
                           setSelectedId(order._id);
                         }}
                       >
-                        Cancel
+                        Delete
                       </button>
                     )}
+                    {order.paymentStatus === "paid" &&
+                      order.deliveryStatus === "pending" && (
+                        <button
+                          className="btn btn-xs btn-success text-white"
+                          onClick={() => {
+                            handleDelivery(order._id);
+                          }}
+                        >
+                          Make Delivery
+                        </button>
+                      )}
                   </td>
                 </tr>
               );
@@ -133,6 +203,46 @@ const ManageOrders = () => {
           </tbody>
         </table>
       </div>
+      {/* Modal */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Delete Modal"
+        ariaHideApp={false}
+      >
+        <label
+          onClick={closeModal}
+          className="btn btn-sm btn-circle absolute right-2 top-2"
+        >
+          ✕
+        </label>
+        <div>
+          <h3 className="text-slate-900 text-3xl text-center my-4">
+            Are You Sure?
+          </h3>
+          <p className="flex-grow-0 text-center font-semibold text-slate-500">
+            Do you really want to delete this order? This process cannot be
+            undone.
+          </p>
+        </div>
+        <div className="flex justify-center my-4 gap-12">
+          <button
+            onClick={closeModal}
+            type="submit"
+            className="btn bg-warning text-black hover:text-white border-0 rounded-none"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleDelete}
+            type="submit"
+            className="btn btn-error text-white rounded-none"
+          >
+            Delete
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

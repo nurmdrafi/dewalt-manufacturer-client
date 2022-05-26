@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const customStyles = {
   content: {
@@ -63,17 +64,16 @@ const ManageProducts = () => {
       .then((result) => {
         if (result.deletedCount) {
           refetch();
-          // show toast message
-        } else {
-          // show toast message
+          toast.success("Product deleted successfully");
         }
       });
 
     closeModal();
   };
-  // refetch();
+
   return (
     <div>
+      <Toaster position="top-right" reverseOrder={false} />
       <h2 className="text-center font-bold text-2xl my-4">Manage Products</h2>
       <div>
         <table className="table-auto border-separate">
@@ -82,7 +82,9 @@ const ManageProducts = () => {
             <tr>
               <th className="text-center bg-primary p-3 mx-2">No.</th>
               <th className="text-center bg-primary p-3 mx-2">Product Name</th>
-              <th className="text-center bg-primary p-3 mx-2">Available Quantity</th>
+              <th className="text-center bg-primary p-3 mx-2">
+                Available Quantity
+              </th>
               <th className="text-center bg-primary p-3 mx-2">Action</th>
             </tr>
           </thead>
