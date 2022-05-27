@@ -10,9 +10,9 @@ const Navbar = () => {
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
-    navigate("/login")
+    navigate("/login");
   };
-  
+
   const MenuItems = (
     <>
       <li>
@@ -24,7 +24,7 @@ const Navbar = () => {
       <li>
         <Link to="/my-portfolio">My Portfolio</Link>
       </li>
-      {user ?
+      {user ? (
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -34,10 +34,14 @@ const Navbar = () => {
               Sign Out
             </button>
           </li>
-        </> : <li>
-          <Link to="/login" className="btn btn-ghost">Login</Link>
+        </>
+      ) : (
+        <li>
+          <Link to="/login" className="btn btn-ghost">
+            Login
+          </Link>
         </li>
-      }
+      )}
     </>
   );
   return (
