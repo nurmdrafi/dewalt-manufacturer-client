@@ -126,14 +126,14 @@ const MyPortfolio = () => {
               </a>
             </li>
             <li className="text-xl">
-              3. Rock Fitness (Independent Service Provider) {"  "}
+              3. Travel Agency {"  "}
               <a
                 className="link link-hover text-blue-600 font-semibold"
                 target="_blank"
                 rel="noreferrer"
-                href="https://rock-fitness-nurmdrafi.netlify.app/"
+                href="https://nurmdrafi.github.io/travel-agency/"
               >
-                https://rock-fitness-nurmdrafi.netlify.app/
+                https://nurmdrafi.github.io/travel-agency/
               </a>
             </li>
           </ul>

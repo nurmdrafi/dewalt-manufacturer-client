@@ -3,19 +3,12 @@ import Reviews from "./Reviews";
 import Tools from "./Tools";
 import Map from "./Map";
 import Contact from "./Contact";
-import contactBackground from "../../assets/images/contact-background-.png";
-
-const ContactBackground = {
-  background: `url(${contactBackground})`,
-  minHeight: "90vh",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center",
-  backgroundSize: "auto",
-};
+import Banner from "./Banner";
 
 const Home = () => {
   return (
     <div>
+      <Banner />
       <Tools />
       <Reviews />
       <Map />
