@@ -16,18 +16,18 @@ const Navbar = () => {
   const MenuItems = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/home" className="font-semibold">Home</Link>
       </li>
       <li>
-        <Link to="/blogs">Blogs</Link>
+        <Link to="/blogs" className="font-semibold">Blogs</Link>
       </li>
       <li>
-        <Link to="/my-portfolio">My Portfolio</Link>
+        <Link to="/my-portfolio" className="font-semibold">My Portfolio</Link>
       </li>
       {user ? (
         <>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard" className="font-semibold">Dashboard</Link>
           </li>
           <li>
             <button className="btn btn-ghost" onClick={logout}>
@@ -73,8 +73,8 @@ const Navbar = () => {
         </div>
         <Link to="/home">
           <div className="w-[250px]">
-            <h2 className="font-extrabold text-4xl font-serif">Delware</h2>
-            <h4 className="font-semibold">Manufacturer & Supplier</h4>
+            <h2 className="font-extrabold text-4xl font-serif uppercase">Delware</h2>
+            <h4 className="font-semibold text-[18px]">Manufacturer & Supplier</h4>
           </div>
         </Link>
       </div>

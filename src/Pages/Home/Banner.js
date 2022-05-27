@@ -6,7 +6,7 @@ const Banner = () => {
     background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${BannerImg})`,
     minHeight: "90vh",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center left",
+    backgroundPosition: "center",
   };
   return (
     <section className="hero min-h-screen max-w-full" style={BannerBackground}>
