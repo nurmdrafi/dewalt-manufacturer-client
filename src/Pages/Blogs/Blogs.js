@@ -16,6 +16,7 @@ const Blogs = () => {
           <a
             target="_blank"
             href="https://reactjs.org/"
+            rel="noreferrer"
             className="link link-hover text-blue-600 font-semibold"
           >
             React{" "}
@@ -115,6 +116,7 @@ const Blogs = () => {
           Let’s take a look at a better way of solving this by using{" "}
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://reactjs.org/"
             className="link link-hover text-blue-600 font-semibold"
           >
@@ -563,22 +565,26 @@ const Blogs = () => {
               your functions.
             </li>
             <br />
-            <li>3. It simplifies the debugging process.</li><br />
+            <li>3. It simplifies the debugging process.</li>
+            <br />
             <li>
               4. Unit testing is an integral part of extreme programming.
               Extreme programming is basically a
               “test-everything-that-can-possibly-break” programming strategy.
-            </li><br />
+            </li>
+            <br />
             <li>
               5. Unit tests make code reuse easier. If you want to reuse
               existing code in a new project, you can simply migrate both the
               code and tests to your new project, then run your tests to make
               sure you have the desired results.
-            </li><br />
+            </li>
+            <br />
             <li>
               6. Unit testing improves code coverage. A debatable topic is to
               have 100% code coverage across your application.
-            </li><br />
+            </li>
+            <br />
             <li>
               7. In the testing pyramid, unit tests are faster than integration
               and end-to-end. They are more assertive and return quick feedback.{" "}
