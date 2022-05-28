@@ -1,6 +1,9 @@
 import React from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
+import { BsPeople } from "react-icons/bs";
+import { GiReceiveMoney } from "react-icons/gi";
+import { FaTools } from "react-icons/fa";
 
 const BusinessSummary = () => {
   return (
@@ -10,7 +13,7 @@ const BusinessSummary = () => {
         {/* Customers */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <h2 className="text-4xl font-bold text-center">
+            <p className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -18,14 +21,17 @@ const BusinessSummary = () => {
                   </div>
                 )}
               </VisibilitySensor>
+              <div className="flex justify-center">
+                <BsPeople className="w-[50px]" />
+              </div>
               <h2 className="text-3xl font-bold text-green-500">Customers</h2>
-            </h2>
+            </p>
           </div>
         </div>
         {/* Annual Revenue */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <h2 className="text-4xl font-bold text-center">
+            <p className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -33,16 +39,20 @@ const BusinessSummary = () => {
                   </div>
                 )}
               </VisibilitySensor>
-            </h2>
-            <h2 className="text-3xl font-bold text-green-500">
-              Annual Revenue
-            </h2>
+
+              <div className="flex justify-center">
+                <GiReceiveMoney className="w-[50px]" />
+              </div>
+              <h2 className="text-3xl font-bold text-green-500">
+                Annual Revenue
+              </h2>
+            </p>
           </div>
         </div>
         {/* Tools */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <h2 className="text-4xl font-bold text-center">
+            <p className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -50,8 +60,11 @@ const BusinessSummary = () => {
                   </div>
                 )}
               </VisibilitySensor>
+              <div className="flex justify-center">
+                <FaTools className="w-[50px]" />
+              </div>
               <h2 className="text-3xl font-bold text-green-500">Tools</h2>
-            </h2>
+            </p>
           </div>
         </div>
       </div>

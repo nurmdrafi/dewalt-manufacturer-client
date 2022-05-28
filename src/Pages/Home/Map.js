@@ -15,7 +15,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const Map = () => {
   return (
-    <section className="container">
+    <section className="w-full">
       <h2 className="text-center font-bold text-3xl my-16">Location</h2>
       <MapContainer
         center={[23.7934, 90.4064]}
