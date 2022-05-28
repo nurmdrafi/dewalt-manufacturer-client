@@ -54,7 +54,7 @@ const Reviews = () => {
           <SwiperSlide key={review._id}>
             <ReviewCard review={review} />
           </SwiperSlide>
-        ))}
+        )).reverse()}
       </Swiper>
     </section>
   );
