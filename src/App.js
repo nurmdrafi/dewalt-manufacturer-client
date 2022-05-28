@@ -18,6 +18,7 @@ import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Purchase from "./Purchase/Purchase";
 import Payment from "./Pages/Dashboard/Payment.js";
 import RequireAuth from "./Pages/Auth/RequireAuth";
+import Footer from "../src/Pages/Shared/Footer";
 
 function App() {
   return (

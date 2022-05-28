@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../Pages/Shared/Footer";
 
 const customStyles = {
   content: {
@@ -337,6 +338,7 @@ const Purchase = () => {
           </form>
         </Modal>
       </div>
+      <Footer />
     </div>
   );
 };

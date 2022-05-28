@@ -45,7 +45,7 @@ const CheckoutForm = ({ product }) => {
         })
   );
   if (isLoading) {
-    return <p></p>;
+    return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
 
   const handleSubmit = async (event) => {

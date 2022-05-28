@@ -5,6 +5,7 @@ import Map from "./Map";
 import Contact from "./Contact";
 import Banner from "./Banner";
 import BusinessSummary from "./BusinessSummary";
+import Footer from "../../Pages/Shared/Footer";
 
 const Home = () => {
   return (
@@ -12,9 +13,10 @@ const Home = () => {
       <Banner />
       <Tools />
       <Reviews />
-      <BusinessSummary/>
+      <BusinessSummary />
       <Map />
       <Contact />
+      <Footer />
     </div>
   );
 };

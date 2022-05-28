@@ -9,6 +9,7 @@ import {
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../../Pages/Shared/Footer";
 
 const Register = () => {
   const {
@@ -106,193 +107,198 @@ const Register = () => {
     return <p>Loading...</p>;
   }
 
-
   // Error
   if (error) {
     toast.error(error.message, {
-      id: "signin error"
+      id: "signin error",
     });
   }
   if (googleError) {
-    toast.error(googleError.message,{
-      id: "google error"
+    toast.error(googleError.message, {
+      id: "google error",
     });
   }
   if (updateError) {
     toast.error(updateError.message, {
-      id: "update error"
+      id: "update error",
     });
   }
 
   return (
-    <div className="flex justify-center items-center my-16">
-      <Toaster position="top-right" reverseOrder={false} />
-      <div className="card w-96 bg-base-100 drop-shadow-lg">
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">Registration</h2>
+    <div>
+      <div className="flex justify-center items-center my-16">
+        <Toaster position="top-right" reverseOrder={false} />
+        <div className="card w-96 bg-base-100 drop-shadow-lg">
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">Registration</h2>
 
-          {/* Form Start */}
-          <form
-            onSubmit={handleSubmit(handleRegistration)}
-            className=" flex flex-col gap-3"
-          >
-            {/* Name */}
-            <div className="form-control min-w-[350px]">
-              <label className="text-left pb-1">Name</label>
-              <input
-                type="text"
-                className={`input input-bordered w-full ${
-                  errors.name && "input-error"
-                }`}
-                {...register("name", {
-                  required: "Please enter your name",
-                  minLength: {
-                    value: 5,
-                    message: "Please enter at least 6 characters",
-                  },
-                })}
-              />
-              {/* Error Message */}
-              {errors.name?.type === "required" && (
-                <p className="text-error text-left pt-2">
-                  {errors.name.message}
-                </p>
-              )}
-              {errors.name?.type === "minLength" && (
-                <p className="text-error text-left py-2">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div className="form-control min-w-[350px]">
-              <label className="text-left pb-1">Email</label>
-              <input
-                type="email"
-                className={`input input-bordered w-full ${
-                  errors.email && "input-error"
-                }`}
-                {...register("email", {
-                  required: "Please enter your email",
-                  pattern: {
-                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                    message: "Please provide a valid email",
-                  },
-                })}
-              />
-              {/* Error Message */}
-              {errors.email?.type === "required" && (
-                <p className="text-error text-left pt-2">
-                  {errors.email.message}
-                </p>
-              )}
-              {errors.email?.type === "pattern" && (
-                <p className="text-danger text-left text-red-500 py-2">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-
-            {/* Password*/}
-            <div className="form-control min-w-[350px]">
-              <label className="text-left pb-1">Password</label>
-              <input
-                type="text"
-                className={`input input-bordered w-full ${
-                  errors.password && "input-error"
-                }`}
-                {...register("password", {
-                  required: "Please enter your password",
-                })}
-              />
-              {/* Error Message */}
-              {errors.password?.type === "required" && (
-                <p className="text-error text-left pt-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "whitespace" && (
-                <p className="text-danger text-left text-red-500 py-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "uppercase" && (
-                <p className="text-error text-left py-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "lowercase" && (
-                <p className="text-error text-left py-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "digit" && (
-                <p className="text-error text-left py-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "symbol" && (
-                <p className="text-error text-left py-2">
-                  {errors.password.message}
-                </p>
-              )}
-              {errors.password?.type === "length" && (
-                <p className="text-error text-left py-2">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
-
-            {/* Confirm Password */}
-            <div className="form-control min-w-[350px]">
-              <label className="text-left pb-1">Confirm Password</label>
-              <input
-                type="text"
-                className={`input input-bordered w-full ${
-                  errors.confirmPassword && "input-error"
-                }`}
-                {...register("confirmPassword")}
-              />
-              {/* Error Message */}
-              {errors.confirmPassword?.type === "match" && (
-                <p className="text-error text-left py-2">
-                  {errors.confirmPassword.message}
-                </p>
-              )}
-            </div>
-
-            {/* Login Button */}
-            <button
-              type="submit"
-              className="btn btn-primary uppercase min-w-[350px]"
+            {/* Form Start */}
+            <form
+              onSubmit={handleSubmit(handleRegistration)}
+              className=" flex flex-col gap-3"
             >
-              Register
+              {/* Name */}
+              <div className="form-control min-w-[350px]">
+                <label className="text-left pb-1">Name</label>
+                <input
+                  type="text"
+                  className={`input input-bordered w-full ${
+                    errors.name && "input-error"
+                  }`}
+                  {...register("name", {
+                    required: "Please enter your name",
+                    minLength: {
+                      value: 5,
+                      message: "Please enter at least 6 characters",
+                    },
+                  })}
+                />
+                {/* Error Message */}
+                {errors.name?.type === "required" && (
+                  <p className="text-error text-left pt-2">
+                    {errors.name.message}
+                  </p>
+                )}
+                {errors.name?.type === "minLength" && (
+                  <p className="text-error text-left py-2">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div className="form-control min-w-[350px]">
+                <label className="text-left pb-1">Email</label>
+                <input
+                  type="email"
+                  className={`input input-bordered w-full ${
+                    errors.email && "input-error"
+                  }`}
+                  {...register("email", {
+                    required: "Please enter your email",
+                    pattern: {
+                      value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                      message: "Please provide a valid email",
+                    },
+                  })}
+                />
+                {/* Error Message */}
+                {errors.email?.type === "required" && (
+                  <p className="text-error text-left pt-2">
+                    {errors.email.message}
+                  </p>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <p className="text-danger text-left text-red-500 py-2">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Password*/}
+              <div className="form-control min-w-[350px]">
+                <label className="text-left pb-1">Password</label>
+                <input
+                  type="text"
+                  className={`input input-bordered w-full ${
+                    errors.password && "input-error"
+                  }`}
+                  {...register("password", {
+                    required: "Please enter your password",
+                  })}
+                />
+                {/* Error Message */}
+                {errors.password?.type === "required" && (
+                  <p className="text-error text-left pt-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "whitespace" && (
+                  <p className="text-danger text-left text-red-500 py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "uppercase" && (
+                  <p className="text-error text-left py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "lowercase" && (
+                  <p className="text-error text-left py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "digit" && (
+                  <p className="text-error text-left py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "symbol" && (
+                  <p className="text-error text-left py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+                {errors.password?.type === "length" && (
+                  <p className="text-error text-left py-2">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Confirm Password */}
+              <div className="form-control min-w-[350px]">
+                <label className="text-left pb-1">Confirm Password</label>
+                <input
+                  type="text"
+                  className={`input input-bordered w-full ${
+                    errors.confirmPassword && "input-error"
+                  }`}
+                  {...register("confirmPassword")}
+                />
+                {/* Error Message */}
+                {errors.confirmPassword?.type === "match" && (
+                  <p className="text-error text-left py-2">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Login Button */}
+              <button
+                type="submit"
+                className="btn btn-primary uppercase min-w-[350px]"
+              >
+                Register
+              </button>
+            </form>
+            {/* Form End */}
+
+            <p>
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-secondary font-semibold underline"
+              >
+                Log In Here
+              </Link>
+            </p>
+
+            {/* Divider */}
+            <div className="flex flex-col w-full border-opacity-50">
+              <div className="divider">OR</div>
+            </div>
+
+            {/* Google Button */}
+            <button
+              className="btn btn-outline uppercase min-w-[350px]"
+              onClick={() => signInWithGoogle()}
+            >
+              Continue with google
             </button>
-          </form>
-          {/* Form End */}
-
-          <p>
-            Already have an account?{" "}
-            <Link to="/login" className="text-secondary font-semibold underline">
-              Log In Here
-            </Link>
-          </p>
-
-          {/* Divider */}
-          <div className="flex flex-col w-full border-opacity-50">
-            <div className="divider">OR</div>
           </div>
-
-          {/* Google Button */}
-          <button
-            className="btn btn-outline uppercase min-w-[350px]"
-            onClick={() => signInWithGoogle()}
-          >
-            Continue with google
-          </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
