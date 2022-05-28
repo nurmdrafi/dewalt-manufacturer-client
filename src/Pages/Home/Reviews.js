@@ -20,7 +20,7 @@ const Reviews = () => {
     )
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <div></div>;
   }
   // refetch();
   return (

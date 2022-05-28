@@ -4,6 +4,7 @@ import Tools from "./Tools";
 import Map from "./Map";
 import Contact from "./Contact";
 import Banner from "./Banner";
+import BusinessSummary from "./BusinessSummary";
 
 const Home = () => {
   return (
@@ -11,10 +12,9 @@ const Home = () => {
       <Banner />
       <Tools />
       <Reviews />
+      <BusinessSummary/>
       <Map />
-      <section>
-        <Contact />
-      </section>
+      <Contact />
     </div>
   );
 };
