@@ -1,4 +1,4 @@
-# Website Name: Delware Manufacturer & Supplier
+# Website Name: Delwalt Manufacturer & Supplier
 ### Live: https://dewalt-manufacturer.web.app/
 ### Description: This is a electric power tools manufacturer website. User can place order, manage his/her order, checkout with atm card also update his profile and add review. Admin has full control of products, orders also on users.
 ### Features and Functionality:
