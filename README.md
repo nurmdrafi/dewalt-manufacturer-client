@@ -1,4 +1,4 @@
-# Website Name: Delwalt Manufacturer & Supplier
+# Website Name: Dewalt Manufacturer & Supplier
 ### Live: https://dewalt-manufacturer.web.app/
 ### Description: This is a full stack website for electric power tools manufacture & supply products built with MERN stack and Daisy UI for the design that allows users to place orders, checkout using stripe payment gateway, etc. also included dynamic dashboard functionality based on user role.
 ### Features and Functionality:
