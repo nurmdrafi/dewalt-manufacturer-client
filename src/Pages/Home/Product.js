@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 
-const Products = ({ product }) => {
+const Product = ({ product }) => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const navigate = useNavigate();
@@ -49,4 +49,4 @@ const Products = ({ product }) => {
   );
 };
 
-export default Products;
+export default Product;

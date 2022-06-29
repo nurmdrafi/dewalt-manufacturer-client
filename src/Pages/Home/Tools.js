@@ -1,13 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Products from "./Products";
+import Product from "./Product";
 
 const Tools = () => {
   const {
     isLoading,
-    error,
     data: products,
-    refetch,
   } = useQuery("products", () =>
     fetch("https://delware-manufacturer.herokuapp.com/product").then((res) =>
       res.json()
@@ -21,7 +19,7 @@ const Tools = () => {
       <h2 className="text-center font-bold text-3xl my-16">Tools</h2>
       <div className="flex flex-wrap justify-center gap-5">
         {products.map((product) => (
-          <Products key={product._id} product={product}></Products>
+          <Product key={product._id} product={product}></Product>
         ))}
       </div>
     </section>

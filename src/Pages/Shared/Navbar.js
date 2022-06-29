@@ -19,6 +19,9 @@ const Navbar = () => {
       <li>
         <Link to="/home" className="font-semibold">Home</Link>
       </li>
+      <li>
+        <Link to="/products" className="font-semibold">Products</Link>
+      </li>
       {user ? (
         <>
           <li>

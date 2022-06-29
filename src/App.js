@@ -16,7 +16,7 @@ import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Purchase from "./Purchase/Purchase";
 import Payment from "./Pages/Dashboard/Payment.js";
 import RequireAuth from "./Pages/Auth/RequireAuth";
-import Footer from "../src/Pages/Shared/Footer";
+import Products from "./Pages/Products/Products";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="home" element={<Home />}></Route>
+        <Route path="products" element={<Products/>}></Route>
         <Route
           path="purchase/:_id"
           element={
