@@ -95,7 +95,7 @@ const Login = () => {
 
   // Loading
   if (loading || googleLoading) {
-    return <p>Loading...</p>;
+    return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
 
   // Error

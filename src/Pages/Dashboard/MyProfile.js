@@ -120,7 +120,7 @@ const MyProfile = () => {
 
   // Updating
   if (updating) {
-    return <p>Loading...</p>;
+    return <p className="text-center font-bold text-4xl">Loading...</p>;
   }
   if (updateError) {
     toast.error(updateError.message, {

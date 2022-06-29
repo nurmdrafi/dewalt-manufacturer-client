@@ -124,18 +124,6 @@ const Purchase = () => {
   };
   return (
     <div className="bg-white">
-      {/* User Information */}
-      <div className="card w-full flex items-end rounded-none">
-        <div className="shadow-md bg-slate-200 p-4 rounded-2xl">
-          <div className="card-actions justify-end"></div>
-          <h6>
-            <span className="font-bold">Name:</span> {user?.displayName}
-          </h6>
-          <h6>
-            <span className="font-bold">Email:</span> {user?.email}
-          </h6>
-        </div>
-      </div>
       {/* Product + Booking Information */}
       <div className="card lg:card-side">
         <Toaster position="top-right" reverseOrder={false} />
