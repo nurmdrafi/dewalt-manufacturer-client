@@ -1,12 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
-import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import Navbar from "./Pages/Shared/Navbar";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
@@ -38,8 +36,6 @@ function App() {
           }
         ></Route>
         <Route path="payment/:_id" element={<Payment />}></Route>
-        <Route path="blogs" element={<Blogs />}></Route>
-        <Route path="my-portfolio" element={<MyPortfolio />}></Route>
         <Route path="dashboard" element={<Dashboard />}>
           {/* Nested Routes */}
           <Route index element={<MyProfile />}></Route>

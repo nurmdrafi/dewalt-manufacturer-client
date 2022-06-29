@@ -13,7 +13,7 @@ const BusinessSummary = () => {
         {/* Customers */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <p className="text-4xl font-bold text-center">
+            <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -25,13 +25,13 @@ const BusinessSummary = () => {
                 <BsPeople className="w-[50px]" />
               </div>
               <h2 className="text-3xl font-bold text-green-500">Customers</h2>
-            </p>
+            </div>
           </div>
         </div>
         {/* Annual Revenue */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <p className="text-4xl font-bold text-center">
+            <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -46,13 +46,13 @@ const BusinessSummary = () => {
               <h2 className="text-3xl font-bold text-green-500">
                 Annual Revenue
               </h2>
-            </p>
+            </div>
           </div>
         </div>
         {/* Tools */}
         <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
           <div className="card-body">
-            <p className="text-4xl font-bold text-center">
+            <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -64,7 +64,7 @@ const BusinessSummary = () => {
                 <FaTools className="w-[50px]" />
               </div>
               <h2 className="text-3xl font-bold text-green-500">Tools</h2>
-            </p>
+            </div>
           </div>
         </div>
       </div>

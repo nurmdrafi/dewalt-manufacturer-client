@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import logo from "../../assets/images/DeWalt_Logo.svg.png"
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -17,12 +18,6 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/home" className="font-semibold">Home</Link>
-      </li>
-      <li>
-        <Link to="/blogs" className="font-semibold">Blogs</Link>
-      </li>
-      <li>
-        <Link to="/my-portfolio" className="font-semibold">My Portfolio</Link>
       </li>
       {user ? (
         <>
@@ -72,9 +67,8 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/home">
-          <div className="w-[250px]">
-            <h2 className="font-extrabold text-4xl font-serif uppercase">Delware</h2>
-            <h4 className="font-semibold text-[18px]">Manufacturer & Supplier</h4>
+          <div className="w-[150px]">
+            <img src={logo} alt="DeWalt_Logo" />
           </div>
         </Link>
       </div>
