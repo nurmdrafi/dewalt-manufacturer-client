@@ -111,9 +111,9 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <div className="flex justify-center items-center my-16">
-        <Toaster position="top-right" reverseOrder={false} />
+    <div className="flex flex-col h-screen">
+      <Toaster position="top-right" reverseOrder={false} />
+      <div className="flex justify-center items-center my-auto">
         <div className="card w-96 bg-base-100 drop-shadow-lg">
           <div className="card-body items-center text-center">
             <h2 className="card-title">Log In</h2>
@@ -237,7 +237,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer />
+        <Footer />
     </div>
   );
 };
