@@ -49,9 +49,17 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="navbar bg-primary max-w-7xl mx-auto">
-      <div className="navbar-start">
-        <div className="dropdown">
+    <nav className="navbar bg-primary max-w-7xl mx-auto flex justify-between">
+      {/* Logo */}
+      <Link to="/home" className="order-2 lg:order-first">
+        <div className="w-[150px]">
+          <img src={logo} alt="DeWalt_Logo" />
+        </div>
+      </Link>
+      {/* Menu Items */}
+      <div className="order-3 lg:order-last">
+        {/* Small Menu */}
+        <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,42 +83,37 @@ const Navbar = () => {
             {MenuItems}
           </ul>
         </div>
-        <Link to="/home">
-          <div className="w-[150px]">
-            <img src={logo} alt="DeWalt_Logo" />
-          </div>
-        </Link>
+      </div>
+      {/* Large Menu */}
+      <div className="lg:navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
       </div>
       {/* Dashboard Sidebar */}
-      {user &&
-        window.location.href.includes("dashboard") &&(
-          <>
-            <div className="lg:navbar-end hidden lg:flex">
-              <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
-            </div>
-            <div className="navbar-end lg:hidden lg:flex">
-              <label
-                htmlFor="dashboard-sidebar"
-                className="btn btn-primary drawer-button lg:hidden"
+      {user && window.location.href.includes("dashboard") && (
+        <>
+          <div className="order-1 lg:order-none lg:hidden">
+            <label
+              htmlFor="dashboard-sidebar"
+              className="btn btn-primary drawer-button lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-            </div>
-          </>
-        )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+          </div>
+        </>
+      )}
     </nav>
   );
 };

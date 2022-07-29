@@ -221,15 +221,36 @@ const Login = () => {
                 Create New Account
               </Link>
             </p>
+
+            {/* Divider */}
+            <div className="flex flex-col w-full border-opacity-50">
+              <div className="divider my-1">OR</div>
+            </div>
+
             {/* Demo login*/}
-            <div className="space-x-4 mt-2">
-              <button className="btn btn-sm btn-primary" onClick={() => signInWithEmailAndPassword("user1@user.com", "User@12345")}>Demo User</button>
-              <button className="btn btn-sm btn-primary" onClick={() => signInWithEmailAndPassword("admin@admin.com", "Admin@12345")}>Demo Admin</button>
+
+            <div className="flex space-x-4">
+              <button
+                className="btn btn-sm lowercase btn-outline"
+                onClick={() =>
+                  signInWithEmailAndPassword("user1@user.com", "User@12345")
+                }
+              >
+                Login as a User
+              </button>
+              <button
+                className="btn btn-sm  lowercase btn-outline"
+                onClick={() =>
+                  signInWithEmailAndPassword("admin@admin.com", "Admin@12345")
+                }
+              >
+                Login as an Admin
+              </button>
             </div>
 
             {/* Divider */}
             <div className="flex flex-col w-full border-opacity-50">
-              <div className="divider">OR</div>
+              <div className="divider my-1">OR</div>
             </div>
 
             {/* Google Button */}
