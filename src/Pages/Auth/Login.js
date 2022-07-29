@@ -221,6 +221,11 @@ const Login = () => {
                 Create New Account
               </Link>
             </p>
+            {/* Demo login*/}
+            <div className="space-x-4 mt-2">
+              <button className="btn btn-sm btn-primary" onClick={() => signInWithEmailAndPassword("user1@user.com", "User@12345")}>Demo User</button>
+              <button className="btn btn-sm btn-primary" onClick={() => signInWithEmailAndPassword("admin@admin.com", "Admin@12345")}>Demo Admin</button>
+            </div>
 
             {/* Divider */}
             <div className="flex flex-col w-full border-opacity-50">
@@ -237,7 +242,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 };

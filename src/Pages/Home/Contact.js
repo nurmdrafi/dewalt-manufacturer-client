@@ -27,7 +27,7 @@ const Contact = () => {
         {/* Start Form */}
         <form
           onSubmit={handleSubmit(handleSubmitEmail)}
-          className=" flex flex-col gap-3"
+          className=" flex flex-col gap-3 p-2"
         >
           <h2 className="text-center font-bold text-3xl">Contact Us</h2>
           {/* Name */}

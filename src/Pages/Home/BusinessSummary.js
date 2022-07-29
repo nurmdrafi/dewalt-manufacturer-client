@@ -11,7 +11,7 @@ const BusinessSummary = () => {
       <h2 className="text-center font-bold text-3xl my-16">Business Summary</h2>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
         {/* Customers */}
-        <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
+        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
@@ -24,12 +24,12 @@ const BusinessSummary = () => {
               <div className="flex justify-center">
                 <BsPeople className="w-[50px]" />
               </div>
-              <h2 className="text-3xl font-bold text-green-500">Customers</h2>
+              <h2 className="text-3xl font-bold">Customers</h2>
             </div>
           </div>
         </div>
         {/* Annual Revenue */}
-        <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
+        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
@@ -43,14 +43,14 @@ const BusinessSummary = () => {
               <div className="flex justify-center">
                 <GiReceiveMoney className="w-[50px]" />
               </div>
-              <h2 className="text-3xl font-bold text-green-500">
+              <h2 className="text-3xl font-bold">
                 Annual Revenue
               </h2>
             </div>
           </div>
         </div>
         {/* Tools */}
-        <div className="card w-[300px] bg-base-100 shadow-xl mx-auto">
+        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
@@ -63,7 +63,7 @@ const BusinessSummary = () => {
               <div className="flex justify-center">
                 <FaTools className="w-[50px]" />
               </div>
-              <h2 className="text-3xl font-bold text-green-500">Tools</h2>
+              <h2 className="text-3xl font-bold">Tools</h2>
             </div>
           </div>
         </div>

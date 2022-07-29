@@ -56,12 +56,12 @@ const AddProduct = () => {
             .then((result) => {
               if (result.insertedId) {
                 reset();
-                toast.success("Product added successfully" ,{
-                  id: "add success"
+                toast.success("Product added successfully", {
+                  id: "add success",
                 });
               } else {
                 toast.error("Product didn't upload", {
-                  id: "add error"
+                  id: "add error",
                 });
               }
             });
@@ -103,7 +103,7 @@ const AddProduct = () => {
               <label className="text-left pb-1">Image</label>
               <input
                 type="file"
-                className={`input input-bordered w-full 
+                className={`input input-bordered w-full file:border-0 file:mt-2 file:bg-primary file:rounded-lg file:font-semibold file:cursor-pointer
                  ${errors.image && "input-error"}`}
                 {...register("image", {
                   required: "Please upload image",
