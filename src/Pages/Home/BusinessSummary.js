@@ -8,7 +8,7 @@ import { FaTools } from "react-icons/fa";
 const BusinessSummary = () => {
   return (
     <section className="w-full mx-auto">
-      <h2 className="text-center font-bold text-3xl my-16">Business Summary</h2>
+      <h2 className="--heading">Business Summary</h2>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-8 bg-primary">
         {/* Customers */}
         <div className="card max-w-sm mx-auto">
@@ -43,9 +43,7 @@ const BusinessSummary = () => {
               <div className="flex justify-center">
                 <GiReceiveMoney className="w-[50px]" />
               </div>
-              <h2 className="text-3xl font-bold">
-                Annual Revenue
-              </h2>
+              <h2 className="text-3xl font-bold">Annual Revenue</h2>
             </div>
           </div>
         </div>

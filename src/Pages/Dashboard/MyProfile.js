@@ -105,7 +105,7 @@ const MyProfile = () => {
         if (result.modifiedCount) {
           refetch();
           toast.success("Successfully updated!", {
-            id: "update success"
+            id: "update success",
           });
         }
       });
@@ -122,7 +122,7 @@ const MyProfile = () => {
   }
   if (updateError) {
     toast.error(updateError.message, {
-      id: "update error"
+      id: "update error",
     });
   }
 
@@ -135,7 +135,7 @@ const MyProfile = () => {
 
       {/* Card */}
       <div className="card lg:w-[500px] min-w-[350px] bg-base-100 shadow-xl">
-        <div className="card-body">
+        <div className="card-body space-y-3">
           <h2 className="text-center font-bold text-2xl my-4">My Profile</h2>
           <h3>
             <span className="font-bold">Name: </span>
@@ -161,8 +161,8 @@ const MyProfile = () => {
             {user?.linkedin || "N/A"}
           </h3>
           <div className="card-actions justify-stat">
-            <button className="btn btn-primary" onClick={openModal}>
-              Update
+            <button className="btn btn-primary w-full" onClick={openModal}>
+              Edit
             </button>
           </div>
         </div>
@@ -187,7 +187,7 @@ const MyProfile = () => {
           className=" flex flex-col gap-3"
         >
           {/* Name */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Name</label>
             <input
               type="text"
@@ -200,7 +200,7 @@ const MyProfile = () => {
           </div>
 
           {/* Email */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Email</label>
             <input
               type="email"
@@ -211,7 +211,7 @@ const MyProfile = () => {
           </div>
 
           {/* Education */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Education</label>
             <input
               type="text"
@@ -222,7 +222,7 @@ const MyProfile = () => {
           </div>
 
           {/* Location */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Location</label>
             <input
               type="text"
@@ -233,7 +233,7 @@ const MyProfile = () => {
           </div>
 
           {/* Phone Number */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Phone Number</label>
             <input
               type="number"
@@ -244,7 +244,7 @@ const MyProfile = () => {
           </div>
 
           {/* Linkedin Profile Link */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Linkedin Profile Link</label>
             <input
               type="text"

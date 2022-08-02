@@ -41,10 +41,7 @@ const Purchase = () => {
     formState: { errors },
     setError,
   } = useForm();
-  const {
-    isLoading,
-    data: product,
-  } = useQuery("product", () =>
+  const { isLoading, data: product } = useQuery("product", () =>
     fetch(`https://delware-manufacturer.herokuapp.com/product/${_id}`, {
       method: "GET",
       headers: {
@@ -197,7 +194,7 @@ const Purchase = () => {
               Booking Information
             </h2>
             {/* User Name */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Name</label>
               <input
                 type="text"
@@ -209,7 +206,7 @@ const Purchase = () => {
             </div>
 
             {/* Email */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Email</label>
               <input
                 type="email"
@@ -221,7 +218,7 @@ const Purchase = () => {
             </div>
 
             {/* Minimum Quantity */}
-            <div className="form-control  lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Quantity</label>
               <input
                 type="number"
@@ -252,7 +249,7 @@ const Purchase = () => {
             )}
 
             {/* Available Quantity */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Available Quantity</label>
               <input
                 type="number"
@@ -273,7 +270,7 @@ const Purchase = () => {
             </div>
 
             {/* Address */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Address</label>
               <input
                 type="text"
@@ -293,7 +290,7 @@ const Purchase = () => {
             </div>
 
             {/* Contact No. */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Contact No.</label>
               <input
                 type="number"

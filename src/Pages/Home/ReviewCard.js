@@ -39,4 +39,4 @@ const ReviewCard = ({ review }) => {
   );
 };
 
-export default ReviewCard;
+export default React.memo(ReviewCard);

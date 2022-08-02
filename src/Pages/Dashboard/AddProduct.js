@@ -79,7 +79,7 @@ const AddProduct = () => {
             className=" flex flex-col gap-3"
           >
             {/* Name */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Name</label>
               <input
                 type="text"
@@ -99,7 +99,7 @@ const AddProduct = () => {
             </div>
 
             {/* Image */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Image</label>
               <input
                 type="file"
@@ -118,7 +118,7 @@ const AddProduct = () => {
             </div>
 
             {/* Description */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Description</label>
               <textarea
                 type="text"
@@ -138,7 +138,7 @@ const AddProduct = () => {
             </div>
 
             {/* Minimum Quantity */}
-            <div className="form-control  lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Minimum Order Quantity</label>
               <input
                 type="number"
@@ -158,7 +158,7 @@ const AddProduct = () => {
             </div>
 
             {/* Available Quantity */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Available Quantity</label>
               <input
                 type="number"
@@ -178,7 +178,7 @@ const AddProduct = () => {
             </div>
 
             {/* Price Per Unit */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Price Per Unit</label>
               <input
                 type="text"

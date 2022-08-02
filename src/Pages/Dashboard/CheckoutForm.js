@@ -105,7 +105,7 @@ const CheckoutForm = ({ product }) => {
         .then((data) => {
           setProcessing(false);
           if (data.modifiedCount > 0) {
-            toast.success("Payment successfull")
+            toast.success("Payment successful")
             navigate("/dashboard/my-order");
           }
         });

@@ -11,10 +11,10 @@ const Reviews = () => {
   if (isLoading) {
     return <></>;
   }
-  
+
   return (
     <section className="max-w-7xl mx-auto">
-      <h2 className="text-center font-bold text-3xl my-16">Reviews</h2>
+      <h2 className="--heading">Reviews</h2>
       <div className="columns-xs space-y-8">
         {reviews.map((review, index) => (
           <ReviewCard key={index} review={review} />

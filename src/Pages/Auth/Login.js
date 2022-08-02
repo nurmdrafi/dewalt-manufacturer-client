@@ -236,7 +236,7 @@ const Login = () => {
                   signInWithEmailAndPassword("user1@user.com", "User@12345")
                 }
               >
-                Login as a User
+                Demo User
               </button>
               <button
                 className="btn btn-sm  lowercase btn-outline"
@@ -244,7 +244,7 @@ const Login = () => {
                   signInWithEmailAndPassword("admin@admin.com", "Admin@12345")
                 }
               >
-                Login as an Admin
+                Demo Admin
               </button>
             </div>
 

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
+  
   const {
     register,
     handleSubmit,
@@ -17,17 +18,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-16">
+    <div className="flex justify-center items-center mb-16">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="card bg-base-100">
+        <h2 className="--heading">Contact Us</h2>
         {/* Start Form */}
         <form
           onSubmit={handleSubmit(handleSubmitEmail)}
           className=" flex flex-col gap-3 p-2"
         >
-          <h2 className="text-center font-bold text-3xl">Contact Us</h2>
           {/* Name */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Name</label>
             <input
               type="text"
@@ -45,7 +46,7 @@ const Contact = () => {
           </div>
 
           {/* Email */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Email</label>
             <input
               type="email"
@@ -74,7 +75,7 @@ const Contact = () => {
           </div>
 
           {/* Phone Number */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Phone Number</label>
             <input
               type="number"
@@ -94,7 +95,7 @@ const Contact = () => {
           </div>
 
           {/* Message */}
-          <div className="form-control lg:w-[500px] min-w-[350px]">
+          <div className="--input-control">
             <label className="text-left pb-1">Message</label>
             <textarea
               type="text"

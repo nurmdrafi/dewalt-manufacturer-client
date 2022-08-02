@@ -59,14 +59,13 @@ const AddReview = () => {
       })
       .then((result) => {
         if (result.insertedId) {
-          console.log(result);
           toast.success("Successfully add a review", {
-            id: "add success"
-          })
+            id: "add success",
+          });
         } else {
           toast.error("Failed to add a review", {
-            id: "add error"
-          })
+            id: "add error",
+          });
         }
       });
     reset();
@@ -80,7 +79,7 @@ const AddReview = () => {
           <h2 className="text-center font-bold text-2xl mb-4">Add A Review</h2>
           <form onSubmit={handleSubmit(handleAddReview)}>
             {/* Name */}
-            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+            <div className="--input-control my-4">
               <label className="text-left pb-1">Name</label>
               <input
                 type="text"
@@ -92,7 +91,7 @@ const AddReview = () => {
             </div>
 
             {/* Email */}
-            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+            <div className="--input-control my-4">
               <label className="text-left pb-1">Email</label>
               <input
                 type="email"
@@ -104,7 +103,7 @@ const AddReview = () => {
             </div>
 
             {/* Location */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Location</label>
               <input
                 type="text"
@@ -124,7 +123,7 @@ const AddReview = () => {
             </div>
 
             {/* Ratings */}
-            <div className="form-control lg:w-[500px] min-w-[350px] my-4">
+            <div className="--input-control my-4">
               <span
                 className="flex items-center"
                 {...getStarWrapperProps({
@@ -155,7 +154,7 @@ const AddReview = () => {
               </span>
             </div>
             {/* Description */}
-            <div className="form-control lg:w-[500px] min-w-[350px]">
+            <div className="--input-control">
               <label className="text-left pb-1">Description</label>
               <textarea
                 type="text"

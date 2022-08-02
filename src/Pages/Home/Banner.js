@@ -2,12 +2,15 @@ import React from "react";
 import BannerImg from "../../assets/images/banner-bg.jpg";
 
 const Banner = () => {
+
   const BannerBackground = {
     background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${BannerImg})`,
     minHeight: "100vh",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   };
+
+
   return (
     <section className="hero min-h-screen max-w-full" style={BannerBackground}>
       <div className="hero-content flex-col">

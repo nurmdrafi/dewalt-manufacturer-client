@@ -24,7 +24,9 @@ const Product = ({ product }) => {
           <span className="font-bold text-2xl mr-2">
             {product.minimumQuantity} Units
           </span>
-          <span className="font-semibold text-slate-500">Minimum Order Quantity</span>
+          <span className="font-semibold text-slate-500">
+            Minimum Order Quantity
+          </span>
         </p>
         <p className="text-left flex-grow-0">
           <span className="font-bold text-2xl mr-2">
@@ -49,4 +51,4 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
+export default React.memo(Product);
