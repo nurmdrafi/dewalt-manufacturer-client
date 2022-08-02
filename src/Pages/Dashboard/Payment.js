@@ -17,7 +17,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
 
-  const { isLoading, error, data, refetch } = useQuery(
+  const { isLoading } = useQuery(
     "order",
     () =>
       _id &&

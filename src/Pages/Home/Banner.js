@@ -4,7 +4,7 @@ import BannerImg from "../../assets/images/banner-bg.jpg";
 const Banner = () => {
   const BannerBackground = {
     background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${BannerImg})`,
-    minHeight: "90vh",
+    minHeight: "100vh",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   };
@@ -20,7 +20,7 @@ const Banner = () => {
             the very highest standards and meet all relevant industry
             regulations.
           </p>
-          <button className="btn bg-primary text-black border-0 hover:text-primary hover:border-primary hover:border-2">
+          <button className="btn bg-primary text-black rounded-none border-0 hover:border-primary hover:text-white ">
             Get Started
           </button>
         </div>

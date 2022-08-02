@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -23,7 +22,6 @@ const customStyles = {
 const ManageOrders = () => {
   const [selectedId, setSelectedId] = useState("");
   const navigate = useNavigate();
-  const [user] = useAuthState(auth);
 
   // Modal
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -37,7 +35,6 @@ const ManageOrders = () => {
   }
   const {
     isLoading,
-    error,
     data: orders,
     refetch,
   } = useQuery("orders", () =>

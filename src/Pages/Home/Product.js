@@ -38,7 +38,7 @@ const Product = ({ product }) => {
         </p>
         <div className="card-actions justify-center">
           <button
-            className="btn bg-primary rounded-none text-black hover:text-white w-full border-0"
+            className="btn bg-primary rounded-none mt-3 text-black hover:text-white w-full border-0"
             onClick={() => !admin && navigate(`/purchase/${product._id}`)}
           >
             Book Now

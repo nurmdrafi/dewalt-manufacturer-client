@@ -24,7 +24,6 @@ const MakeAdmin = () => {
   const navigate = useNavigate();
   const {
     isLoading,
-    error,
     data: users,
     refetch,
   } = useQuery("users", () =>

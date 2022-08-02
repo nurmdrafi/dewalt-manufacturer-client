@@ -27,7 +27,6 @@ const MyProfile = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -39,7 +38,6 @@ const MyProfile = () => {
   // React Query
   const {
     isLoading,
-    error,
     data: user,
     refetch,
   } = useQuery(

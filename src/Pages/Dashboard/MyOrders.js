@@ -37,7 +37,6 @@ const MyOrders = () => {
   const email = user?.email;
   const {
     isLoading,
-    error,
     data: orders,
     refetch,
   } = useQuery(

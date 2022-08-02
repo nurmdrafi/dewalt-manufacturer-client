@@ -49,14 +49,15 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="navbar bg-primary max-w-7xl mx-auto flex justify-between">
+    <nav className="navbar bg-primary max-w-7xl mx-auto flex justify-between relative">
       {/* Logo */}
       <Link to="/home" className="order-2 lg:order-first">
         <div className="w-[150px]">
           <img src={logo} alt="DeWalt_Logo" />
         </div>
       </Link>
-      {/* Menu Items */}
+
+      {/* Menu Container */}
       <div className="order-3 lg:order-last">
         {/* Small Menu */}
         <div className="dropdown dropdown-end">
@@ -84,8 +85,9 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
       {/* Large Menu */}
-      <div className="lg:navbar-end hidden lg:flex">
+      <div className="lg:navbar-end hidden lg:flex absolute right-0">
         <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
       </div>
       {/* Dashboard Sidebar */}

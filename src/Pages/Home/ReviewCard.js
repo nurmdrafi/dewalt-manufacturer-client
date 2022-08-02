@@ -11,7 +11,7 @@ const ReviewCard = ({ review }) => {
   };
   const { stars, getStarProps } = useStars(config);
   return (
-    <div className="card w-96 mx-auto bg-slate-50 shadow-xl">
+    <div className="card max-w-sm mx-auto bg-slate-50 shadow-xl">
       <div className="card-body">
         <h2 className="card-title text-3xl capitalize">{review.name}</h2>
         <h2 className="card-title text-primary uppercase">{review.location}</h2>

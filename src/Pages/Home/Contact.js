@@ -1,15 +1,11 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import auth from "../../firebase.init";
 
 const Contact = () => {
-  const [user] = useAuthState(auth);
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
     reset,
   } = useForm();

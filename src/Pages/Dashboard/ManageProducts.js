@@ -25,7 +25,6 @@ const ManageProducts = () => {
   const navigate = useNavigate();
   const {
     isLoading,
-    error,
     data: products,
     refetch,
   } = useQuery("products", () =>

@@ -40,11 +40,9 @@ const Purchase = () => {
     handleSubmit,
     formState: { errors },
     setError,
-    reset,
   } = useForm();
   const {
     isLoading,
-    error,
     data: product,
   } = useQuery("product", () =>
     fetch(`https://delware-manufacturer.herokuapp.com/product/${_id}`, {

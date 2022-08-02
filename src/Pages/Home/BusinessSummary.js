@@ -7,11 +7,11 @@ import { FaTools } from "react-icons/fa";
 
 const BusinessSummary = () => {
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="w-full mx-auto">
       <h2 className="text-center font-bold text-3xl my-16">Business Summary</h2>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-8 bg-primary">
         {/* Customers */}
-        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
+        <div className="card max-w-sm mx-auto">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
@@ -29,7 +29,7 @@ const BusinessSummary = () => {
           </div>
         </div>
         {/* Annual Revenue */}
-        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
+        <div className="card max-w-sm mx-auto">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
@@ -50,7 +50,7 @@ const BusinessSummary = () => {
           </div>
         </div>
         {/* Tools */}
-        <div className="card w-[300px] bg-gray-100 shadow-xl mx-auto ring-2 ring-primary">
+        <div className="card max-w-sm mx-auto">
           <div className="card-body">
             <div className="text-4xl font-bold text-center">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
