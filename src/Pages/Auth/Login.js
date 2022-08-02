@@ -8,7 +8,8 @@ import {
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../Pages/Shared/Footer";
+import Footer from "../Shared/Footer";
+
 
 const Login = () => {
   const {
@@ -109,6 +110,7 @@ const Login = () => {
       id: "google error",
     });
   }
+  
 
   return (
     <div className="flex flex-col h-screen">
