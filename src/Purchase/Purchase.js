@@ -57,7 +57,7 @@ const Purchase = () => {
     })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   const {
@@ -126,45 +126,45 @@ const Purchase = () => {
           <img src={img} alt="Album" className="w-[400px]" />
         </figure>
         <div className="card-body lg:w-1/2">
-          <h2 className="card-title text-4xl my-2">{productName}</h2>
-          <p className="flex-grow-0 text-xl my-2">
+          <h2 className="card-title my-2 text-4xl">{productName}</h2>
+          <p className="my-2 flex-grow-0 text-xl">
             <span className="font-bold">Description: </span>
             {description}
           </p>
           <div className="flex justify-between">
-            <p className="text-left flex-grow-0 my-2">
-              <span className="font-bold text-3xl block">${price}</span>
-              <span className="font-semibold text-slate-500 block">
+            <p className="my-2 flex-grow-0 text-left">
+              <span className="block text-3xl font-bold">${price}</span>
+              <span className="block font-semibold text-slate-500">
                 {" "}
                 / Per Unit
               </span>
             </p>
-            <p className="text-left flex-grow-0 my-2">
-              <span className="font-bold text-2xl mr-2 block">
+            <p className="my-2 flex-grow-0 text-left">
+              <span className="mr-2 block text-2xl font-bold">
                 {minimumQuantity} Units
               </span>
-              <span className="font-semibold text-slate-500 block">
+              <span className="block font-semibold text-slate-500">
                 Minimum Order
               </span>
             </p>
-            <p className="text-left  flex-grow-0 my-2">
-              <span className="font-bold text-2xl mr-2 block">
+            <p className="my-2  flex-grow-0 text-left">
+              <span className="mr-2 block text-2xl font-bold">
                 {availableQuantity} Units
               </span>
-              <span className="font-semibold text-slate-500 block">
+              <span className="block font-semibold text-slate-500">
                 Available
               </span>
             </p>
           </div>
           <div className="card-actions justify-center">
             <button
-              className="btn btn-primary rounded-none w-2/4 hover:bg-black hover:text-white my-6"
+              className="btn btn-primary my-6 w-2/4 rounded-none hover:bg-black hover:text-white"
               onClick={openModal}
             >
               Book Now
             </button>
             <button
-              className="btn btn-success rounded-none w-2/4 text-black my-6 hover:bg-black hover:text-white border-0"
+              className="btn btn-success my-6 w-2/4 rounded-none border-0 text-black hover:bg-black hover:text-white"
               onClick={() => navigate("/dashboard/my-order")}
             >
               My Orders
@@ -181,21 +181,21 @@ const Purchase = () => {
         >
           <label
             onClick={closeModal}
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-circle btn-sm absolute right-2 top-2"
           >
             ✕
           </label>
           {/* Form */}
           <form
             onSubmit={handleSubmit(handleBooking)}
-            className=" flex flex-col mx-auto gap-3"
+            className=" mx-auto flex flex-col gap-3"
           >
-            <h2 className="font-bold text-2xl text-center">
+            <h2 className="text-center text-2xl font-bold">
               Booking Information
             </h2>
             {/* User Name */}
             <div className="--input-control">
-              <label className="text-left pb-1">Name</label>
+              <label className="pb-1 text-left">Name</label>
               <input
                 type="text"
                 className="input input-bordered w-full bg-slate-100"
@@ -207,7 +207,7 @@ const Purchase = () => {
 
             {/* Email */}
             <div className="--input-control">
-              <label className="text-left pb-1">Email</label>
+              <label className="pb-1 text-left">Email</label>
               <input
                 type="email"
                 className="input input-bordered w-full bg-slate-100"
@@ -219,7 +219,7 @@ const Purchase = () => {
 
             {/* Minimum Quantity */}
             <div className="--input-control">
-              <label className="text-left pb-1">Quantity</label>
+              <label className="pb-1 text-left">Quantity</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
@@ -232,25 +232,25 @@ const Purchase = () => {
               />
               {/* Error Message */}
               {errors.quantity?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.quantity.message}
                 </p>
               )}
               {errors.quantity?.type === "minQty" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.quantity.message}
                 </p>
               )}
             </div>
             {errors.quantity?.type === "maxQty" && (
-              <p className="text-error text-left pt-2">
+              <p className="pt-2 text-left text-error">
                 {errors.quantity.message}
               </p>
             )}
 
             {/* Available Quantity */}
             <div className="--input-control">
-              <label className="text-left pb-1">Available Quantity</label>
+              <label className="pb-1 text-left">Available Quantity</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
@@ -263,7 +263,7 @@ const Purchase = () => {
               />
               {/* Error Message */}
               {errors.availableQuantity?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.availableQuantity.message}
                 </p>
               )}
@@ -271,7 +271,7 @@ const Purchase = () => {
 
             {/* Address */}
             <div className="--input-control">
-              <label className="text-left pb-1">Address</label>
+              <label className="pb-1 text-left">Address</label>
               <input
                 type="text"
                 className={`input input-bordered w-full ${
@@ -283,7 +283,7 @@ const Purchase = () => {
               />
               {/* Error Message */}
               {errors.address?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.address.message}
                 </p>
               )}
@@ -291,7 +291,7 @@ const Purchase = () => {
 
             {/* Contact No. */}
             <div className="--input-control">
-              <label className="text-left pb-1">Contact No.</label>
+              <label className="pb-1 text-left">Contact No.</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
@@ -303,7 +303,7 @@ const Purchase = () => {
               />
               {/* Error Message */}
               {errors.contact?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.contact.message}
                 </p>
               )}
@@ -312,7 +312,7 @@ const Purchase = () => {
             {/* Submit Button */}
             <div className="card-actions justify-center">
               <button
-                className="btn btn-primary rounded-none w-2/4 hover:bg-black hover:text-white my-6"
+                className="btn btn-primary my-6 w-2/4 rounded-none hover:bg-black hover:text-white"
                 type="submit"
               >
                 Submit

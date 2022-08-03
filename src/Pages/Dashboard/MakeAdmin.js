@@ -42,7 +42,7 @@ const MakeAdmin = () => {
     })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   // Modal
@@ -74,16 +74,16 @@ const MakeAdmin = () => {
   };
   return (
     <div>
-      <h2 className="text-center font-bold text-2xl my-4">Make Admin</h2>
-      <div className="overflow-x-auto w-full">
+      <h2 className="my-4 text-center text-2xl font-bold">Make Admin</h2>
+      <div className="w-full overflow-x-auto">
         <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>
-              <th className="text-center bg-primary">No.</th>
-              <th className="text-center bg-primary">Email</th>
-              <th className="text-center bg-primary">Role</th>
-              <th className="text-center bg-primary">Action</th>
+              <th className="bg-primary text-center">No.</th>
+              <th className="bg-primary text-center">Email</th>
+              <th className="bg-primary text-center">Role</th>
+              <th className="bg-primary text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -99,7 +99,7 @@ const MakeAdmin = () => {
                   <td>
                     {!user.role && (
                       <button
-                        className="btn btn-xs btn-warning"
+                        className="btn btn-warning btn-xs"
                         onClick={() => {
                           openModal();
                           setEmail(user?.email);
@@ -125,12 +125,12 @@ const MakeAdmin = () => {
         >
           <label
             onClick={closeModal}
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-circle btn-sm absolute right-2 top-2"
           >
             ✕
           </label>
           <div>
-            <h3 className="text-slate-900 text-3xl text-center my-4">
+            <h3 className="my-4 text-center text-3xl text-slate-900">
               Are You Sure?
             </h3>
             <p className="flex-grow-0 text-center font-semibold text-slate-500">
@@ -138,18 +138,18 @@ const MakeAdmin = () => {
               process cannot be undone.
             </p>
           </div>
-          <div className="flex justify-center my-4 gap-12">
+          <div className="my-4 flex justify-center gap-12">
             <button
               onClick={closeModal}
               type="submit"
-              className="btn bg-warning text-black hover:text-white border-0 rounded-none"
+              className="btn rounded-none border-0 bg-warning text-black hover:text-white"
             >
               Cancel
             </button>
             <button
               onClick={handleMakeAdmin}
               type="submit"
-              className="btn btn-error text-white rounded-none px-8"
+              className="btn btn-error rounded-none px-8 text-white"
             >
               YES
             </button>

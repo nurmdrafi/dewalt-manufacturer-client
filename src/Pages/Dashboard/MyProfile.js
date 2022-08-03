@@ -59,7 +59,7 @@ const MyProfile = () => {
       })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   // console.log(user);
@@ -118,7 +118,7 @@ const MyProfile = () => {
 
   // Updating
   if (updating) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
   if (updateError) {
     toast.error(updateError.message, {
@@ -129,14 +129,14 @@ const MyProfile = () => {
   return (
     <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <h1 className="text-3xl text-center py-5 font-bold">
+      <h1 className="py-5 text-center text-3xl font-bold">
         Welcome to Dashboard
       </h1>
 
       {/* Card */}
-      <div className="card lg:w-[500px] min-w-[350px] bg-base-100 shadow-xl">
+      <div className="card min-w-[350px] bg-base-100 shadow-xl lg:w-[500px]">
         <div className="card-body space-y-3">
-          <h2 className="text-center font-bold text-2xl my-4">My Profile</h2>
+          <h2 className="my-4 text-center text-2xl font-bold">My Profile</h2>
           <h3>
             <span className="font-bold">Name: </span>
             {currentUser?.displayName}
@@ -160,7 +160,7 @@ const MyProfile = () => {
             <span className="font-bold">Linkedin Profile Link:</span>{" "}
             {user?.linkedin || "N/A"}
           </h3>
-          <div className="card-actions justify-stat">
+          <div className="justify-stat card-actions">
             <button className="btn btn-primary w-full" onClick={openModal}>
               Edit
             </button>
@@ -177,7 +177,7 @@ const MyProfile = () => {
       >
         <label
           onClick={closeModal}
-          className="btn btn-sm btn-circle absolute right-2 top-2"
+          className="btn btn-circle btn-sm absolute right-2 top-2"
         >
           ✕
         </label>
@@ -188,7 +188,7 @@ const MyProfile = () => {
         >
           {/* Name */}
           <div className="--input-control">
-            <label className="text-left pb-1">Name</label>
+            <label className="pb-1 text-left">Name</label>
             <input
               type="text"
               className={"input input-bordered w-full"}
@@ -201,7 +201,7 @@ const MyProfile = () => {
 
           {/* Email */}
           <div className="--input-control">
-            <label className="text-left pb-1">Email</label>
+            <label className="pb-1 text-left">Email</label>
             <input
               type="email"
               className={"input input-bordered w-full bg-slate-200"}
@@ -212,7 +212,7 @@ const MyProfile = () => {
 
           {/* Education */}
           <div className="--input-control">
-            <label className="text-left pb-1">Education</label>
+            <label className="pb-1 text-left">Education</label>
             <input
               type="text"
               className={"input input-bordered w-full"}
@@ -223,7 +223,7 @@ const MyProfile = () => {
 
           {/* Location */}
           <div className="--input-control">
-            <label className="text-left pb-1">Location</label>
+            <label className="pb-1 text-left">Location</label>
             <input
               type="text"
               className={"input input-bordered w-full"}
@@ -234,7 +234,7 @@ const MyProfile = () => {
 
           {/* Phone Number */}
           <div className="--input-control">
-            <label className="text-left pb-1">Phone Number</label>
+            <label className="pb-1 text-left">Phone Number</label>
             <input
               type="number"
               className={"input input-bordered w-full"}
@@ -245,7 +245,7 @@ const MyProfile = () => {
 
           {/* Linkedin Profile Link */}
           <div className="--input-control">
-            <label className="text-left pb-1">Linkedin Profile Link</label>
+            <label className="pb-1 text-left">Linkedin Profile Link</label>
             <input
               type="text"
               className={`input input-bordered w-full ${
@@ -262,7 +262,7 @@ const MyProfile = () => {
             />
             {/* Error Message */}
             {errors.linkedin?.type === "pattern" && (
-              <p className="text-error text-left pt-2">
+              <p className="pt-2 text-left text-error">
                 {errors.linkedin.message}
               </p>
             )}
@@ -271,7 +271,7 @@ const MyProfile = () => {
           {/* Add Product Button */}
           <button
             type="submit"
-            className="btn btn-primary uppercase min-w-[350px]"
+            className="btn btn-primary min-w-[350px] uppercase"
           >
             Save
           </button>

@@ -7,13 +7,13 @@ import { FaTools } from "react-icons/fa";
 
 const BusinessSummary = () => {
   return (
-    <section className="w-full mx-auto">
+    <section className="mx-auto w-full">
       <h2 className="--heading">Business Summary</h2>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-8 bg-primary">
+      <div className="grid grid-cols-1 gap-8 bg-primary md:grid-cols-3">
         {/* Customers */}
-        <div className="card max-w-sm mx-auto">
+        <div className="card mx-auto max-w-sm">
           <div className="card-body">
-            <div className="text-4xl font-bold text-center">
+            <div className="text-center text-4xl font-bold">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -29,9 +29,9 @@ const BusinessSummary = () => {
           </div>
         </div>
         {/* Annual Revenue */}
-        <div className="card max-w-sm mx-auto">
+        <div className="card mx-auto max-w-sm">
           <div className="card-body">
-            <div className="text-4xl font-bold text-center">
+            <div className="text-center text-4xl font-bold">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>
@@ -48,9 +48,9 @@ const BusinessSummary = () => {
           </div>
         </div>
         {/* Tools */}
-        <div className="card max-w-sm mx-auto">
+        <div className="card mx-auto max-w-sm">
           <div className="card-body">
-            <div className="text-4xl font-bold text-center">
+            <div className="text-center text-4xl font-bold">
               <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <div style={{ height: 50 }}>

@@ -40,15 +40,15 @@ const Payment = () => {
         })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   return (
-    <div className="flex flex-col justify-between h-[90vh]">
-      <div className="flex flex-col items-center my-16">
-        <div className="card w-[400px] bg-base-100 shadow-xl my-12">
+    <div className="flex h-[90vh] flex-col justify-between">
+      <div className="my-16 flex flex-col items-center">
+        <div className="card my-12 w-[400px] bg-base-100 shadow-xl">
           <div className="card-body">
-            <p className="text-success font-bold">Hello, {product?.userName}</p>
+            <p className="font-bold text-success">Hello, {product?.userName}</p>
             <h2 className="card-title">
               Please Pay for {product?.productName}
             </h2>
@@ -59,7 +59,7 @@ const Payment = () => {
           </div>
         </div>
         {product && (
-          <div className="card w-[400px] shadow-2xl bg-base-100">
+          <div className="card w-[400px] bg-base-100 shadow-2xl">
             <div className="card-body">
               <Elements stripe={stripePromise}>
                 <CheckoutForm product={product} />
@@ -68,7 +68,7 @@ const Payment = () => {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

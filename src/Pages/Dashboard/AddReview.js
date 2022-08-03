@@ -72,15 +72,15 @@ const AddReview = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-16">
+    <div className="my-16 flex items-center justify-center">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="card bg-slate-50 drop-shadow-lg">
         <div className="card-body items-center text-center">
-          <h2 className="text-center font-bold text-2xl mb-4">Add A Review</h2>
+          <h2 className="mb-4 text-center text-2xl font-bold">Add A Review</h2>
           <form onSubmit={handleSubmit(handleAddReview)}>
             {/* Name */}
             <div className="--input-control my-4">
-              <label className="text-left pb-1">Name</label>
+              <label className="pb-1 text-left">Name</label>
               <input
                 type="text"
                 className={"input input-bordered w-full"}
@@ -92,7 +92,7 @@ const AddReview = () => {
 
             {/* Email */}
             <div className="--input-control my-4">
-              <label className="text-left pb-1">Email</label>
+              <label className="pb-1 text-left">Email</label>
               <input
                 type="email"
                 className={"input input-bordered w-full"}
@@ -104,7 +104,7 @@ const AddReview = () => {
 
             {/* Location */}
             <div className="--input-control">
-              <label className="text-left pb-1">Location</label>
+              <label className="pb-1 text-left">Location</label>
               <input
                 type="text"
                 className={`input input-bordered w-full ${
@@ -116,7 +116,7 @@ const AddReview = () => {
               />
               {/* Error Message */}
               {errors.location?.type === "required" && (
-                <p className="text-error text-left  pt-2">
+                <p className="pt-2 text-left  text-error">
                   {errors.location.message}
                 </p>
               )}
@@ -132,7 +132,7 @@ const AddReview = () => {
                   },
                 })}
               >
-                <label className="text-left pt-2 mr-4 lg:mr-24">
+                <label className="mr-4 pt-2 text-left lg:mr-24">
                   Ratings: {selectingValue}/5
                 </label>
                 {stars?.map((star, i) => (
@@ -155,7 +155,7 @@ const AddReview = () => {
             </div>
             {/* Description */}
             <div className="--input-control">
-              <label className="text-left pb-1">Description</label>
+              <label className="pb-1 text-left">Description</label>
               <textarea
                 type="text"
                 className={`textarea textarea-bordered w-full ${
@@ -167,15 +167,15 @@ const AddReview = () => {
               />
               {/* Error Message */}
               {errors.description?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.description.message}
                 </p>
               )}
             </div>
-            <div className="flex justify-center my-4">
+            <div className="my-4 flex justify-center">
               <button
                 type="submit"
-                className="btn btn-primary hover:bg-black hover:text-white rounded-none"
+                className="btn btn-primary rounded-none hover:bg-black hover:text-white"
               >
                 Add Review
               </button>

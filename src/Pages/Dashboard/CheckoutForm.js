@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -13,14 +13,10 @@ const CheckoutForm = ({ product }) => {
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const navigate = useNavigate();
-  
 
   const { _id, price, userName, userEmail } = product;
 
-  const {
-    isLoading,
-    data: payment,
-  } = useQuery(
+  const { isLoading, data: payment } = useQuery(
     "payment",
     () =>
       price &&
@@ -43,7 +39,7 @@ const CheckoutForm = ({ product }) => {
         })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   const handleSubmit = async (event) => {
@@ -105,7 +101,7 @@ const CheckoutForm = ({ product }) => {
         .then((data) => {
           setProcessing(false);
           if (data.modifiedCount > 0) {
-            toast.success("Payment successful")
+            toast.success("Payment successful");
             navigate("/dashboard/my-order");
           }
         });
@@ -113,7 +109,7 @@ const CheckoutForm = ({ product }) => {
   };
   return (
     <>
-    <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false} />
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -145,7 +141,7 @@ const CheckoutForm = ({ product }) => {
           <p>{success} </p>
           <p>
             Your transaction Id:{" "}
-            <span className="text-orange-500 font-bold">{transactionId}</span>{" "}
+            <span className="font-bold text-orange-500">{transactionId}</span>{" "}
           </p>
         </div>
       )}

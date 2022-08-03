@@ -30,12 +30,12 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+          <ul className="menu w-80 overflow-y-auto bg-base-100 p-4 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link
                 to="/dashboard"
-                className="focus:bg-primary hover:bg-primary"
+                className="hover:bg-primary focus:bg-primary"
               >
                 {" "}
                 <CgProfile className="text-2xl" /> My Profile
@@ -46,7 +46,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/my-order"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     <RiShoppingCartLine className="text-2xl" /> My Orders
                   </Link>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/add-review"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     <MdOutlineRateReview className="text-2xl" /> Add A Review
                   </Link>
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/manage-orders"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     {" "}
                     <MdOutlineProductionQuantityLimits className="text-2xl" />{" "}
@@ -77,7 +77,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/add-product"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     <AiOutlineFolderAdd className="text-2xl" /> Add A Product
                   </Link>
@@ -86,7 +86,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/manage-products"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     <GrHostMaintenance className="text-2xl" /> Manage Products
                   </Link>
@@ -94,7 +94,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     to="/dashboard/make-admin"
-                    className="focus:bg-primary hover:bg-primary"
+                    className="hover:bg-primary focus:bg-primary"
                   >
                     <GrUserAdmin className="text-2xl" /> Make Admin
                   </Link>

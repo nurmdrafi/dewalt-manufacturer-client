@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-primary py-4 flex-col ">
+    <footer className="w-full flex-col bg-primary py-4 ">
       <p className="text-center font-bold">
         All Rights Reserved By © DEWALT | {currentYear}
       </p>

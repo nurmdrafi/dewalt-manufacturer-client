@@ -4,11 +4,11 @@
 
 @layer components {
   .--heading {
-    @apply text-center font-bold text-3xl my-16 underline underline-offset-8 decoration-4 decoration-primary;
+    @apply my-16 text-center text-3xl font-bold underline decoration-primary decoration-4 underline-offset-8;
   }
 
   .--input-control {
-    @apply form-control lg:w-[500px] min-w-[350px];
+    @apply form-control min-w-[350px] lg:w-[500px];
   }
 }
 

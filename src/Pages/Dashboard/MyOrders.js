@@ -58,7 +58,7 @@ const MyOrders = () => {
       })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
   if (!orders) {
     refetch();
@@ -92,23 +92,23 @@ const MyOrders = () => {
   return (
     <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <h2 className="text-center font-bold text-2xl my-4">My Orders</h2>
+      <h2 className="my-4 text-center text-2xl font-bold">My Orders</h2>
       <div>
         <table className="table-auto border-separate">
           {/* <!-- head --> */}
           <thead>
             <tr>
-              <th className="text-center bg-primary p-3 mx-2">No.</th>
-              <th className="text-center bg-primary p-3 mx-2">Product Name</th>
-              <th className="text-center bg-primary p-3 mx-2">QTY</th>
-              <th className="text-center bg-primary p-3 mx-2">Amount</th>
-              <th className="text-center bg-primary p-3 mx-2">
+              <th className="mx-2 bg-primary p-3 text-center">No.</th>
+              <th className="mx-2 bg-primary p-3 text-center">Product Name</th>
+              <th className="mx-2 bg-primary p-3 text-center">QTY</th>
+              <th className="mx-2 bg-primary p-3 text-center">Amount</th>
+              <th className="mx-2 bg-primary p-3 text-center">
                 Transaction Id
               </th>
-              <th className="text-center bg-primary p-3 mx-2">
+              <th className="mx-2 bg-primary p-3 text-center">
                 Payment Status
               </th>
-              <th className="text-center bg-primary p-3 mx-2">Action</th>
+              <th className="mx-2 bg-primary p-3 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -116,13 +116,13 @@ const MyOrders = () => {
               return (
                 <tr key={index}>
                   {/* Serial */}
-                  <td className="font-bold text-center border-b-2">
+                  <td className="border-b-2 text-center font-bold">
                     {index + 1}
                   </td>
                   {/* Img & Name */}
-                  <td className="flex items-center flex-wrap">
+                  <td className="flex flex-wrap items-center">
                     <img
-                      className="w-16 mr-4 rounded"
+                      className="mr-4 w-16 rounded"
                       src={order.img}
                       alt={order.productName}
                     />
@@ -138,7 +138,7 @@ const MyOrders = () => {
                   {/* Payment Status */}
                   <td className="text-center">
                     <button
-                      className={`btn btn-xs text-white hover:bg-error border-0 ${
+                      className={`btn btn-xs border-0 text-white hover:bg-error ${
                         order.paymentStatus === "unpaid" && "bg-error"
                       } ${order.paymentStatus === "paid" && "bg-success"}`}
                     >
@@ -149,13 +149,13 @@ const MyOrders = () => {
                     {order.paymentStatus === "unpaid" && (
                       <div className="flex flex-col gap-2">
                         <button
-                          className="btn btn-xs btn-success text-white whitespace-nowrap"
+                          className="btn btn-success btn-xs whitespace-nowrap text-white"
                           onClick={() => navigate(`/payment/${order._id}`)}
                         >
                           Pay Now
                         </button>
                         <button
-                          className="btn btn-xs btn-error text-white"
+                          className="btn btn-error btn-xs text-white"
                           onClick={() => {
                             setSelectedId(order._id);
                             openModal();
@@ -182,12 +182,12 @@ const MyOrders = () => {
       >
         <label
           onClick={closeModal}
-          className="btn btn-sm btn-circle absolute right-2 top-2"
+          className="btn btn-circle btn-sm absolute right-2 top-2"
         >
           ✕
         </label>
         <div>
-          <h3 className="text-slate-900 text-3xl text-center my-4">
+          <h3 className="my-4 text-center text-3xl text-slate-900">
             Are You Sure?
           </h3>
           <p className="flex-grow-0 text-center font-semibold text-slate-500">
@@ -195,18 +195,18 @@ const MyOrders = () => {
             undone.
           </p>
         </div>
-        <div className="flex justify-center my-4 gap-12">
+        <div className="my-4 flex justify-center gap-12">
           <button
             onClick={closeModal}
             type="submit"
-            className="btn bg-warning text-black hover:text-white border-0 rounded-none"
+            className="btn rounded-none border-0 bg-warning text-black hover:text-white"
           >
             Cancel
           </button>
           <button
             onClick={handleDelete}
             type="submit"
-            className="btn btn-error text-white rounded-none"
+            className="btn btn-error rounded-none text-white"
           >
             Delete
           </button>

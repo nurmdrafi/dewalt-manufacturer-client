@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import Product from "./Product";
 
 const Tools = () => {
-
   const { isLoading, data: products } = useQuery("products", () =>
     fetch("https://delware-manufacturer.herokuapp.com/product").then((res) =>
       res.json()
@@ -13,7 +12,7 @@ const Tools = () => {
     return <></>;
   }
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="mx-auto max-w-7xl">
       <h2 className="--heading">Products</h2>
       <div className="flex flex-wrap justify-center gap-5">
         {products.map((product) => (

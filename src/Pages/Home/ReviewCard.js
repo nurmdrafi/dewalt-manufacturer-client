@@ -11,11 +11,11 @@ const ReviewCard = ({ review }) => {
   };
   const { stars, getStarProps } = useStars(config);
   return (
-    <div className="card max-w-sm mx-auto bg-slate-50 shadow-xl">
+    <div className="card mx-auto max-w-sm bg-slate-50 shadow-xl">
       <div className="card-body">
         <h2 className="card-title text-3xl capitalize">{review.name}</h2>
-        <h2 className="card-title text-primary uppercase">{review.location}</h2>
-        <div className="flex item-center">
+        <h2 className="card-title uppercase text-primary">{review.location}</h2>
+        <div className="item-center flex">
           <h2 className="card-title">Ratings: {review.ratings}/5 </h2>
 
           {stars?.map((star, i) => (

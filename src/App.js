@@ -6,7 +6,6 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Navbar from "./Pages/Shared/Navbar";
 import RequireAuth from "./Pages/Auth/RequireAuth";
 
-
 const Login = React.lazy(() => import("./Pages/Auth/Login"));
 const Register = React.lazy(() => import("./Pages/Auth/Register"));
 const Dashboard = React.lazy(() => import("./Pages/Dashboard/Dashboard"));
@@ -24,9 +23,6 @@ const Payment = React.lazy(() => import("./Pages/Dashboard/Payment.js"));
 const Products = React.lazy(() => import("./Pages/Products/Products"));
 
 function App() {
-
-
-
   return (
     <div>
       <div className="bg-primary">

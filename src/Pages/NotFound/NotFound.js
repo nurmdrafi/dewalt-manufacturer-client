@@ -5,8 +5,8 @@ import Footer from "../../Pages/Shared/Footer";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col justify-between h-[90vh]">
-      <div className="flex justify-center items-center h-screen bg-[#F6F6F6] py-16">
+    <div className="flex h-[90vh] flex-col justify-between">
+      <div className="flex h-screen items-center justify-center bg-[#F6F6F6] py-16">
         <div>
           <img src={img404} alt="" />
           <div className="flex justify-center">
@@ -18,7 +18,7 @@ const NotFound = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

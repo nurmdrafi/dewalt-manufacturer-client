@@ -49,7 +49,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="navbar bg-primary max-w-7xl mx-auto flex justify-between relative">
+    <nav className="navbar relative mx-auto flex max-w-7xl justify-between bg-primary">
       {/* Logo */}
       <Link to="/home" className="order-2 lg:order-first">
         <div className="w-[150px]">
@@ -79,7 +79,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
           >
             {MenuItems}
           </ul>
@@ -87,7 +87,7 @@ const Navbar = () => {
       </div>
 
       {/* Large Menu */}
-      <div className="lg:navbar-end hidden lg:flex absolute right-0">
+      <div className="absolute right-0 hidden lg:navbar-end lg:flex">
         <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
       </div>
       {/* Dashboard Sidebar */}

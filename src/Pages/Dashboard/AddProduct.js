@@ -69,7 +69,7 @@ const AddProduct = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="card bg-base-100 drop-shadow-lg">
         <div className="card-body items-center text-center">
@@ -80,7 +80,7 @@ const AddProduct = () => {
           >
             {/* Name */}
             <div className="--input-control">
-              <label className="text-left pb-1">Name</label>
+              <label className="pb-1 text-left">Name</label>
               <input
                 type="text"
                 className={`input input-bordered w-full ${
@@ -92,7 +92,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.name?.type === "required" && (
-                <p className="text-error text-left  pt-2">
+                <p className="pt-2 text-left  text-error">
                   {errors.name.message}
                 </p>
               )}
@@ -100,10 +100,10 @@ const AddProduct = () => {
 
             {/* Image */}
             <div className="--input-control">
-              <label className="text-left pb-1">Image</label>
+              <label className="pb-1 text-left">Image</label>
               <input
                 type="file"
-                className={`input input-bordered w-full file:border-0 file:mt-2 file:bg-primary file:rounded-lg file:font-semibold file:cursor-pointer
+                className={`input input-bordered w-full file:mt-2 file:cursor-pointer file:rounded-lg file:border-0 file:bg-primary file:font-semibold
                  ${errors.image && "input-error"}`}
                 {...register("image", {
                   required: "Please upload image",
@@ -111,7 +111,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.image?.type === "required" && (
-                <p className="text-error text-left  pt-2">
+                <p className="pt-2 text-left  text-error">
                   {errors.image.message}
                 </p>
               )}
@@ -119,7 +119,7 @@ const AddProduct = () => {
 
             {/* Description */}
             <div className="--input-control">
-              <label className="text-left pb-1">Description</label>
+              <label className="pb-1 text-left">Description</label>
               <textarea
                 type="text"
                 className={`textarea textarea-bordered w-full ${
@@ -131,7 +131,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.description?.type === "required" && (
-                <p className="text-error text-left  pt-2">
+                <p className="pt-2 text-left  text-error">
                   {errors.description.message}
                 </p>
               )}
@@ -139,7 +139,7 @@ const AddProduct = () => {
 
             {/* Minimum Quantity */}
             <div className="--input-control">
-              <label className="text-left pb-1">Minimum Order Quantity</label>
+              <label className="pb-1 text-left">Minimum Order Quantity</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
@@ -151,7 +151,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.minimumQuantity?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.minimumQuantity.message}
                 </p>
               )}
@@ -159,7 +159,7 @@ const AddProduct = () => {
 
             {/* Available Quantity */}
             <div className="--input-control">
-              <label className="text-left pb-1">Available Quantity</label>
+              <label className="pb-1 text-left">Available Quantity</label>
               <input
                 type="number"
                 className={`input input-bordered w-full ${
@@ -171,7 +171,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.availableQuantity?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.availableQuantity.message}
                 </p>
               )}
@@ -179,7 +179,7 @@ const AddProduct = () => {
 
             {/* Price Per Unit */}
             <div className="--input-control">
-              <label className="text-left pb-1">Price Per Unit</label>
+              <label className="pb-1 text-left">Price Per Unit</label>
               <input
                 type="text"
                 className={`input input-bordered w-full ${
@@ -191,7 +191,7 @@ const AddProduct = () => {
               />
               {/* Error Message */}
               {errors.price?.type === "required" && (
-                <p className="text-error text-left pt-2">
+                <p className="pt-2 text-left text-error">
                   {errors.price.message}
                 </p>
               )}
@@ -200,7 +200,7 @@ const AddProduct = () => {
             {/* Add Product Button */}
             <button
               type="submit"
-              className="btn btn-primary uppercase min-w-[350px]"
+              className="btn btn-primary min-w-[350px] uppercase"
             >
               Add Product
             </button>

@@ -20,7 +20,6 @@ const customStyles = {
 };
 
 const ManageOrders = () => {
-
   const [selectedId, setSelectedId] = useState("");
   const navigate = useNavigate();
 
@@ -54,7 +53,7 @@ const ManageOrders = () => {
     })
   );
   if (isLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   //   handle Delete Button
@@ -80,7 +79,7 @@ const ManageOrders = () => {
         if (result.deletedCount) {
           refetch();
           toast.success("Order deleted successfully", {
-            id: "delete success"
+            id: "delete success",
           });
         }
       });
@@ -106,7 +105,7 @@ const ManageOrders = () => {
       .then((data) => {
         if (data.modifiedCount) {
           toast.success("Order delivered successfully", {
-            id: "delivered success"
+            id: "delivered success",
           });
           refetch();
         }
@@ -116,23 +115,23 @@ const ManageOrders = () => {
   return (
     <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <h2 className="text-center font-bold text-2xl my-4">Manage All Orders</h2>
+      <h2 className="my-4 text-center text-2xl font-bold">Manage All Orders</h2>
       <div>
         <table className="table-auto border-separate">
           {/* <!-- head --> */}
           <thead>
             <tr>
-              <th className="text-center bg-primary p-3 mx-2">No.</th>
-              <th className="text-center bg-primary p-3 mx-2">Product Name</th>
-              <th className="text-center bg-primary p-3 mx-2">QTY</th>
-              <th className="text-center bg-primary p-3 mx-2">Amount</th>
-              <th className="text-center bg-primary p-3 mx-2">
+              <th className="mx-2 bg-primary p-3 text-center">No.</th>
+              <th className="mx-2 bg-primary p-3 text-center">Product Name</th>
+              <th className="mx-2 bg-primary p-3 text-center">QTY</th>
+              <th className="mx-2 bg-primary p-3 text-center">Amount</th>
+              <th className="mx-2 bg-primary p-3 text-center">
                 Payment Status
               </th>
-              <th className="text-center bg-primary p-3 mx-2">
+              <th className="mx-2 bg-primary p-3 text-center">
                 Delivery Status
               </th>
-              <th className="text-center bg-primary p-3 mx-2">Action</th>
+              <th className="mx-2 bg-primary p-3 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -140,13 +139,13 @@ const ManageOrders = () => {
               return (
                 <tr key={index}>
                   {/* Serial */}
-                  <td className="font-bold text-center border-b-2">
+                  <td className="border-b-2 text-center font-bold">
                     {index + 1}
                   </td>
                   {/* Img & Name */}
-                  <td className="flex items-center flex-wrap">
+                  <td className="flex flex-wrap items-center">
                     <img
-                      className="w-16 mr-4 rounded"
+                      className="mr-4 w-16 rounded"
                       src={order.img}
                       alt={order.productName}
                     />
@@ -162,7 +161,7 @@ const ManageOrders = () => {
                   {/* Payment Status */}
                   <td className="text-center">
                     <button
-                      className={`btn btn-xs text-white hover:bg-error border-0 ${
+                      className={`btn btn-xs border-0 text-white hover:bg-error ${
                         order.paymentStatus === "unpaid" && "bg-error"
                       } ${order.paymentStatus === "paid" && "bg-success"}`}
                     >
@@ -181,7 +180,7 @@ const ManageOrders = () => {
                   <td className="text-center">
                     {order.paymentStatus === "unpaid" && (
                       <button
-                        className="btn btn-xs btn-error text-white"
+                        className="btn btn-error btn-xs text-white"
                         onClick={() => {
                           openModal();
                           setSelectedId(order._id);
@@ -193,7 +192,7 @@ const ManageOrders = () => {
                     {order.paymentStatus === "paid" &&
                       order.deliveryStatus === "pending" && (
                         <button
-                          className="btn btn-xs btn-success text-white"
+                          className="btn btn-success btn-xs text-white"
                           onClick={() => {
                             handleDelivery(order._id);
                           }}
@@ -218,12 +217,12 @@ const ManageOrders = () => {
       >
         <label
           onClick={closeModal}
-          className="btn btn-sm btn-circle absolute right-2 top-2"
+          className="btn btn-circle btn-sm absolute right-2 top-2"
         >
           ✕
         </label>
         <div>
-          <h3 className="text-slate-900 text-3xl text-center my-4">
+          <h3 className="my-4 text-center text-3xl text-slate-900">
             Are You Sure?
           </h3>
           <p className="flex-grow-0 text-center font-semibold text-slate-500">
@@ -231,18 +230,18 @@ const ManageOrders = () => {
             undone.
           </p>
         </div>
-        <div className="flex justify-center my-4 gap-12">
+        <div className="my-4 flex justify-center gap-12">
           <button
             onClick={closeModal}
             type="submit"
-            className="btn bg-warning text-black hover:text-white border-0 rounded-none"
+            className="btn rounded-none border-0 bg-warning text-black hover:text-white"
           >
             Cancel
           </button>
           <button
             onClick={handleDelete}
             type="submit"
-            className="btn btn-error text-white rounded-none"
+            className="btn btn-error rounded-none text-white"
           >
             Delete
           </button>

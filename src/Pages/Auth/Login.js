@@ -10,7 +10,6 @@ import useToken from "../../hooks/useToken";
 import toast, { Toaster } from "react-hot-toast";
 import Footer from "../Shared/Footer";
 
-
 const Login = () => {
   const {
     register,
@@ -96,7 +95,7 @@ const Login = () => {
 
   // Loading
   if (loading || googleLoading) {
-    return <p className="text-center font-bold text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   // Error
@@ -110,12 +109,11 @@ const Login = () => {
       id: "google error",
     });
   }
-  
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex h-screen flex-col">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="flex justify-center items-center my-auto">
+      <div className="my-auto flex items-center justify-center">
         <div className="card w-96 bg-base-100 drop-shadow-lg">
           <div className="card-body items-center text-center">
             <h2 className="card-title">Log In</h2>
@@ -127,7 +125,7 @@ const Login = () => {
             >
               {/* Email */}
               <div className="form-control min-w-[350px]">
-                <label className="text-left pb-1">Email</label>
+                <label className="pb-1 text-left">Email</label>
                 <input
                   type="email"
                   className={`input input-bordered w-full ${
@@ -143,12 +141,12 @@ const Login = () => {
                 />
                 {/* Error Message */}
                 {errors.email?.type === "required" && (
-                  <p className="text-error text-left pt-2">
+                  <p className="pt-2 text-left text-error">
                     {errors.email.message}
                   </p>
                 )}
                 {errors.email?.type === "pattern" && (
-                  <p className="text-danger text-left text-red-500 py-2">
+                  <p className="text-danger py-2 text-left text-red-500">
                     {errors.email.message}
                   </p>
                 )}
@@ -156,7 +154,7 @@ const Login = () => {
 
               {/* Password*/}
               <div className="form-control min-w-[350px]">
-                <label className="text-left pb-1">Password</label>
+                <label className="pb-1 text-left">Password</label>
                 <input
                   type="text"
                   className={`input input-bordered w-full ${
@@ -168,37 +166,37 @@ const Login = () => {
                 />
                 {/* Error Message */}
                 {errors.password?.type === "required" && (
-                  <p className="text-error text-left pt-2">
+                  <p className="pt-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "whitespace" && (
-                  <p className="text-danger text-left text-red-500 py-2">
+                  <p className="text-danger py-2 text-left text-red-500">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "uppercase" && (
-                  <p className="text-error text-left py-2">
+                  <p className="py-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "lowercase" && (
-                  <p className="text-error text-left py-2">
+                  <p className="py-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "digit" && (
-                  <p className="text-error text-left py-2">
+                  <p className="py-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "symbol" && (
-                  <p className="text-error text-left py-2">
+                  <p className="py-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
                 {errors.password?.type === "length" && (
-                  <p className="text-error text-left py-2">
+                  <p className="py-2 text-left text-error">
                     {errors.password.message}
                   </p>
                 )}
@@ -207,7 +205,7 @@ const Login = () => {
               {/* Login Button */}
               <button
                 type="submit"
-                className="btn btn-primary uppercase min-w-[350px]"
+                className="btn btn-primary min-w-[350px] uppercase"
               >
                 Log In
               </button>
@@ -218,14 +216,14 @@ const Login = () => {
               New to DeWalt?{" "}
               <Link
                 to="/register"
-                className="text-secondary font-semibold underline"
+                className="font-semibold text-secondary underline"
               >
                 Create New Account
               </Link>
             </p>
 
             {/* Divider */}
-            <div className="flex flex-col w-full border-opacity-50">
+            <div className="flex w-full flex-col border-opacity-50">
               <div className="divider my-1">OR</div>
             </div>
 
@@ -233,7 +231,7 @@ const Login = () => {
 
             <div className="flex space-x-4">
               <button
-                className="btn btn-sm lowercase btn-outline"
+                className="btn btn-outline btn-sm lowercase"
                 onClick={() =>
                   signInWithEmailAndPassword("user1@user.com", "User@12345")
                 }
@@ -241,7 +239,7 @@ const Login = () => {
                 Demo User
               </button>
               <button
-                className="btn btn-sm  lowercase btn-outline"
+                className="btn btn-outline  btn-sm lowercase"
                 onClick={() =>
                   signInWithEmailAndPassword("admin@admin.com", "Admin@12345")
                 }
@@ -251,13 +249,13 @@ const Login = () => {
             </div>
 
             {/* Divider */}
-            <div className="flex flex-col w-full border-opacity-50">
+            <div className="flex w-full flex-col border-opacity-50">
               <div className="divider my-1">OR</div>
             </div>
 
             {/* Google Button */}
             <button
-              className="btn btn-outline uppercase min-w-[350px]"
+              className="btn btn-outline min-w-[350px] uppercase"
               onClick={() => signInWithGoogle()}
             >
               Continue with google

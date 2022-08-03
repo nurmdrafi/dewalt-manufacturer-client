@@ -16,20 +16,20 @@ const Product = ({ product }) => {
           <img src={product.img} alt={product.name} className="max-w-[300px]" />
         </div>
 
-        <p className="text-left flex-grow-0">
-          <span className="font-bold text-3xl">${product.price}</span>
+        <p className="flex-grow-0 text-left">
+          <span className="text-3xl font-bold">${product.price}</span>
           <span className="font-semibold text-slate-500"> / Per Unit</span>
         </p>
-        <p className="text-left flex-grow-0">
-          <span className="font-bold text-2xl mr-2">
+        <p className="flex-grow-0 text-left">
+          <span className="mr-2 text-2xl font-bold">
             {product.minimumQuantity} Units
           </span>
           <span className="font-semibold text-slate-500">
             Minimum Order Quantity
           </span>
         </p>
-        <p className="text-left flex-grow-0">
-          <span className="font-bold text-2xl mr-2">
+        <p className="flex-grow-0 text-left">
+          <span className="mr-2 text-2xl font-bold">
             {product.availableQuantity} Units
           </span>
           <span className="font-semibold text-slate-500">Available</span>
@@ -40,7 +40,7 @@ const Product = ({ product }) => {
         </p>
         <div className="card-actions justify-center">
           <button
-            className="btn bg-primary rounded-none mt-3 text-black hover:text-white w-full border-0"
+            className="btn mt-3 w-full rounded-none border-0 bg-primary text-black hover:text-white"
             onClick={() => !admin && navigate(`/purchase/${product._id}`)}
           >
             Book Now

@@ -13,7 +13,6 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const Map = () => {
-
   return (
     <section className="w-full">
       <h2 className="--heading">Location</h2>
