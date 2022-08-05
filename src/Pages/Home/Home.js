@@ -2,11 +2,12 @@ import React, { Suspense } from "react";
 import Banner from "./Banner";
 import Footer from "../../Pages/Shared/Footer";
 const Tools = React.lazy(() => import("./Tools"));
-const Map = React.lazy(() => import("./Map"));
 const Contact = React.lazy(() => import("./Contact"));
 const Reviews = React.lazy(() => import("./Reviews"));
 const BusinessSummary = React.lazy(() => import("./BusinessSummary"));
 const Portfolio = React.lazy(() => import("./Portfolio"));
+const CreateAccount = React.lazy(() => import("./CreateAccount"));
+/* 
 
 // const OtherComponent = React.lazy(() => import('./OtherComponent'));
 /* 
@@ -26,13 +27,15 @@ const Home = () => {
         <Reviews />
       </Suspense>
       <Suspense fallback={<></>}>
-        <Portfolio />
+        <Suspense fallback={<></>}>
+          <Portfolio />
+        </Suspense>
       </Suspense>
       <Suspense fallback={<></>}>
         <BusinessSummary />
       </Suspense>
       <Suspense fallback={<></>}>
-        <Map />
+        <CreateAccount />
       </Suspense>
       <Suspense fallback={<></>}>
         <Contact />

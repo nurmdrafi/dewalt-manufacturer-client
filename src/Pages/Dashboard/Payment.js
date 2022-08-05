@@ -68,6 +68,10 @@ const Payment = () => {
           </div>
         )}
       </div>
+      <p className="text-center mb-5 text-gray-600 font-bold">
+       Test Card Number: 4242 4242 4242 4242
+        <br />
+      </p>
       <Footer />
     </div>
   );

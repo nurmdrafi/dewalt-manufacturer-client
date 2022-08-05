@@ -8,12 +8,12 @@
   }
 
   .--input-control {
-    @apply form-control min-w-[350px] lg:w-[500px];
+    @apply form-control min-w-[350px];
   }
 }
 
 @layer utilities {
   .leaflet-container {
-    height: 500px !important;
+    height: 450px !important;
   }
 }

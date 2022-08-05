@@ -18,9 +18,10 @@ const AddProduct = React.lazy(() => import("./Pages/Dashboard/AddProduct"));
 const ManageProducts = React.lazy(() =>
   import("./Pages/Dashboard/ManageProducts")
 );
-const Purchase = React.lazy(() => import("./Purchase/Purchase"));
+const Purchase = React.lazy(() => import("./Pages/Purchase/Purchase"));
 const Payment = React.lazy(() => import("./Pages/Dashboard/Payment.js"));
 const Products = React.lazy(() => import("./Pages/Products/Products"));
+const Blogs = React.lazy(() => import("./Pages/Blogs/Blogs"));
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="home" element={<Home />}></Route>
+        <Route path="blogs" element={<Blogs />}></Route>
         <Route
           path="products"
           element={

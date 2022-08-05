@@ -14,11 +14,10 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const Map = () => {
   return (
-    <section className="w-full">
-      <h2 className="--heading">Location</h2>
+    <div>
       <MapContainer
         center={[23.7934, 90.4064]}
-        zoom={16}
+        zoom={18}
         scrollWheelZoom={false}
         className="leaflet-container"
       >
@@ -30,7 +29,7 @@ const Map = () => {
           <Popup>Dewalt Manufacturer & Supplier</Popup>
         </Marker>
       </MapContainer>
-    </section>
+    </div>
   );
 };
 

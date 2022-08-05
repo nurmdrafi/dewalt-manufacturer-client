@@ -49,7 +49,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="max-w-7xl mx-auto navbar relative flex justify-between bg-primary">
+    <nav className="navbar relative mx-auto flex max-w-7xl justify-between bg-primary">
       {/* Logo */}
       <Link to="/home" className="order-2 lg:order-first">
         <div className="w-[150px]">
