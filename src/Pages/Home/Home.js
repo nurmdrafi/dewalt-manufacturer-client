@@ -6,6 +6,7 @@ const Map = React.lazy(() => import("./Map"));
 const Contact = React.lazy(() => import("./Contact"));
 const Reviews = React.lazy(() => import("./Reviews"));
 const BusinessSummary = React.lazy(() => import("./BusinessSummary"));
+const Portfolio = React.lazy(() => import("./Portfolio"));
 
 // const OtherComponent = React.lazy(() => import('./OtherComponent'));
 /* 
@@ -23,6 +24,9 @@ const Home = () => {
       </Suspense>
       <Suspense fallback={<></>}>
         <Reviews />
+      </Suspense>
+      <Suspense fallback={<></>}>
+        <Portfolio />
       </Suspense>
       <Suspense fallback={<></>}>
         <BusinessSummary />

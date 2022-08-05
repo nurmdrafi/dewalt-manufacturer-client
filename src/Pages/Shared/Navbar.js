@@ -49,7 +49,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="navbar relative mx-auto flex max-w-7xl justify-between bg-primary">
+    <nav className="max-w-7xl mx-auto navbar relative flex justify-between bg-primary">
       {/* Logo */}
       <Link to="/home" className="order-2 lg:order-first">
         <div className="w-[150px]">
@@ -60,7 +60,7 @@ const Navbar = () => {
       {/* Menu Container */}
       <div className="order-3 lg:order-last">
         {/* Small Menu */}
-        <div className="dropdown dropdown-end">
+        <div className="dropdown-end dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"

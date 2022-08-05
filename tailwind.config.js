@@ -1,6 +1,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   daisyui: {
@@ -10,7 +13,6 @@ module.exports = {
           primary: "#FEBD17",
           secondary: "#1A1A1A",
           "base-100": "#EEEEEE",
-          info: "#3ABFF8",
           success: "#07b03f",
           warning: "#FEBD17",
           error: "#EF4444",

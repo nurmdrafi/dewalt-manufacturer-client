@@ -12,7 +12,7 @@ const Tools = () => {
     return <></>;
   }
   return (
-    <section className="mx-auto max-w-7xl">
+    <section className="container">
       <h2 className="--heading">Products</h2>
       <div className="flex flex-wrap justify-center gap-5">
         {products.map((product) => (

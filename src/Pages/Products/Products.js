@@ -14,7 +14,7 @@ const Products = () => {
   }
   return (
     <div>
-      <div className="mx-auto my-16 max-w-7xl">
+      <div className="container my-16">
         <h2 className="--heading">Products</h2>
         <div className="flex flex-wrap justify-center gap-5">
           {products.map((product) => (

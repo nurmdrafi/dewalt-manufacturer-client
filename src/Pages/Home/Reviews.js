@@ -13,7 +13,7 @@ const Reviews = () => {
   }
 
   return (
-    <section className="mx-auto max-w-7xl">
+    <section className="container lg:px-10">
       <h2 className="--heading">Reviews</h2>
       <div className="columns-xs space-y-8">
         {reviews.map((review, index) => (
