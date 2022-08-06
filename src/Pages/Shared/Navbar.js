@@ -26,6 +26,11 @@ const Navbar = () => {
           Products
         </Link>
       </li>
+      <li>
+        <Link to="/blogs" className="font-semibold">
+          Blogs
+        </Link>
+      </li>
       {user ? (
         <>
           <li>

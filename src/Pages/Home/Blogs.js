@@ -7,7 +7,7 @@ import logo1 from "../../assets/images/portfolio-logo-1.png";
 import logo2 from "../../assets/images/portfolio-logo-2.png";
 import logo3 from "../../assets/images/portfolio-logo-3.png";
 
-const Portfolio = () => {
+const Blogs = () => {
   return (
     <section className="mt-16">
       <h2 className="--heading">Blogs</h2>
@@ -55,9 +55,11 @@ const Portfolio = () => {
             <h2 className="text-dark py-3 text-4xl font-bold uppercase md:text-5xl">
               BUILT TO LAST™
             </h2>
-            <button className="btn rounded-none bg-black text-white hover:border-0 hover:bg-primary hover:text-black">
-              Learn More
-            </button>
+            <Link to="/blogs">
+              <button className="btn rounded-none bg-black text-white hover:border-0 hover:bg-primary hover:text-black">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
         {/* image */}
@@ -89,9 +91,11 @@ const Portfolio = () => {
             <h2 className="text-dark py-3 text-4xl font-bold uppercase md:text-5xl">
               BATTERY-POWERED OUTDOOR EQUIPMENT
             </h2>
-            <button className="btn rounded-none bg-black text-white hover:border-0 hover:bg-primary hover:text-black">
-              Learn More
-            </button>
+            <Link to="/blogs">
+              <button className="btn rounded-none bg-black text-white hover:border-0 hover:bg-primary hover:text-black">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -99,4 +103,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Blogs;

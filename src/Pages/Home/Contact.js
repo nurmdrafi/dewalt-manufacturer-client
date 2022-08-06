@@ -18,12 +18,12 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-1 bg-white">
+    <section className="bg-white">
       <Toaster position="top-right" reverseOrder={false} />
-      <h2 className="--heading">Contact Us</h2>
+      <h2 className="--heading pt-10">Contact Us</h2>
       <div className="grid grid-flow-row md:grid-flow-col md:grid-cols-2">
         {/* Start Form */}
-        <div className="mb-5 flex items-center justify-center md:order-2 md:mb-0 bg-white">
+        <div className="flex items-center justify-center bg-white md:order-2">
           <div className="card rounded-none bg-white">
             <form
               onSubmit={handleSubmit(handleSubmitEmail)}
@@ -34,7 +34,7 @@ const Contact = () => {
                 <label className="pb-1 text-left">Name</label>
                 <input
                   type="text"
-                  className={`input input-bordered w-full ${
+                  className={`input w-full rounded-none border-0 border-b-4 border-primary bg-transparent focus:outline-none ${
                     errors.name && "input-error"
                   }`}
                   {...register("name", {
@@ -54,7 +54,7 @@ const Contact = () => {
                 <label className="pb-1 text-left">Email</label>
                 <input
                   type="email"
-                  className={`input input-bordered w-full ${
+                  className={`input w-full rounded-none border-0 border-b-4 border-primary bg-transparent focus:outline-none ${
                     errors.email && "input-error"
                   }`}
                   {...register("email", {
@@ -83,7 +83,7 @@ const Contact = () => {
                 <label className="pb-1 text-left">Phone Number</label>
                 <input
                   type="number"
-                  className={`input input-bordered w-full ${
+                  className={`input w-full rounded-none border-0 border-b-4 border-primary bg-transparent focus:outline-none ${
                     errors.number && "input-error"
                   }`}
                   {...register("number", {
@@ -103,7 +103,7 @@ const Contact = () => {
                 <label className="pb-1 text-left">Message</label>
                 <textarea
                   type="text"
-                  className={`textarea textarea-bordered w-full ${
+                  className={`textarea w-full rounded-none border-0 border-b-4 border-primary bg-transparent focus:outline-none ${
                     errors.message && "textarea-error"
                   }`}
                   {...register("description", {
@@ -120,7 +120,7 @@ const Contact = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="btn btn-primary min-w-[350px] uppercase"
+                className="btn btn-primary mb-5 min-w-[350px] border-none uppercase hover:bg-black hover:text-white md:mb-0"
               >
                 Submit
               </button>
@@ -130,7 +130,7 @@ const Contact = () => {
         </div>
 
         {/* Map */}
-        <div className="md:order-1">
+        <div className=" md:order-1">
           <Map />
         </div>
       </div>

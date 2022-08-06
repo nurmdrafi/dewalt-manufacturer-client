@@ -15,5 +15,6 @@
 @layer utilities {
   .leaflet-container {
     height: 450px !important;
+    
   }
 }

@@ -5,7 +5,7 @@ const Tools = React.lazy(() => import("./Tools"));
 const Contact = React.lazy(() => import("./Contact"));
 const Reviews = React.lazy(() => import("./Reviews"));
 const BusinessSummary = React.lazy(() => import("./BusinessSummary"));
-const Portfolio = React.lazy(() => import("./Portfolio"));
+const Blogs = React.lazy(() => import("./Blogs"));
 const CreateAccount = React.lazy(() => import("./CreateAccount"));
 /* 
 
@@ -28,7 +28,7 @@ const Home = () => {
       </Suspense>
       <Suspense fallback={<></>}>
         <Suspense fallback={<></>}>
-          <Portfolio />
+          <Blogs />
         </Suspense>
       </Suspense>
       <Suspense fallback={<></>}>
