@@ -4,6 +4,7 @@ import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import logo from "../../assets/images/DeWalt_Logo.svg.png";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -20,6 +21,12 @@ const Navbar = () => {
         <Link to="/home" className="font-semibold">
           Home
         </Link>
+      </li>
+
+      <li>
+        <HashLink to="home/#reviews" className="font-semibold">
+          Reviews
+        </HashLink>
       </li>
       <li>
         <Link to="/products" className="font-semibold">
@@ -39,17 +46,29 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <HashLink to="home/#contact" className="font-semibold">
+              Contact Us
+            </HashLink>
+          </li>
+          <li>
             <button className="btn btn-ghost" onClick={logout}>
               Sign Out
             </button>
           </li>
         </>
       ) : (
-        <li>
-          <Link to="/login" className="btn btn-ghost">
-            Login
-          </Link>
-        </li>
+        <>
+          <li>
+            <HashLink to="home/#contact" className="font-semibold">
+              Contact Us
+            </HashLink>
+          </li>
+          <li>
+            <Link to="/login" className="btn btn-ghost">
+              Login
+            </Link>
+          </li>
+        </>
       )}
     </>
   );
@@ -65,7 +84,7 @@ const Navbar = () => {
       {/* Menu Container */}
       <div className="order-3 lg:order-last">
         {/* Small Menu */}
-        <div className="dropdown-end dropdown">
+        <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"

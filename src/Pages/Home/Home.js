@@ -27,9 +27,7 @@ const Home = () => {
         <Reviews />
       </Suspense>
       <Suspense fallback={<></>}>
-        <Suspense fallback={<></>}>
-          <Blogs />
-        </Suspense>
+        <Blogs />
       </Suspense>
       <Suspense fallback={<></>}>
         <BusinessSummary />

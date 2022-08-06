@@ -22,6 +22,7 @@
     "react-modal": "^3.15.1",
     "react-query": "^3.39.0",
     "react-router-dom": "6",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "react-visibility-sensor": "^5.1.1",
     "stars-rating-react-hooks": "^0.2.4",
