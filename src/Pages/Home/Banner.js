@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import BannerImg from "../../assets/images/banner-bg.webp";
 
 const Banner = () => {
@@ -21,9 +22,11 @@ const Banner = () => {
             the very highest standards and meet all relevant industry
             regulations.
           </p>
+          <Link to="/products">
           <button className="btn rounded-none border-0 bg-primary text-black hover:border-primary hover:text-white ">
             Get Started
           </button>
+          </Link>
         </div>
       </div>
     </section>

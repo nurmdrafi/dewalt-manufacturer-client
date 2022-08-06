@@ -46,7 +46,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <HashLink to="home/#contact" className="font-semibold">
+            <HashLink to="home/#contact" className="font-semibold whitespace-nowrap">
               Contact Us
             </HashLink>
           </li>
@@ -59,7 +59,7 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <HashLink to="home/#contact" className="font-semibold">
+            <HashLink to="home/#contact" className="font-semibold whitespace-nowrap">
               Contact Us
             </HashLink>
           </li>
@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
 
       {/* Large Menu */}
-      <div className="absolute right-0 hidden lg:navbar-end lg:flex">
+      <div className="absolute right-10 hidden lg:navbar-end lg:flex">
         <ul className="menu menu-horizontal p-0">{MenuItems}</ul>
       </div>
       {/* Dashboard Sidebar */}
