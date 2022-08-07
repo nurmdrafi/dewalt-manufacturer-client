@@ -4,7 +4,7 @@ import createAcc from "../../assets/images/create-account.jpg";
 
 const CreateAccount = () => {
   return (
-    <section className="w-full">
+    <section className="container">
       <div
         className="h-[250px] w-full bg-cover bg-center md:h-[550px]"
         style={{ backgroundImage: `url(${createAcc})` }}

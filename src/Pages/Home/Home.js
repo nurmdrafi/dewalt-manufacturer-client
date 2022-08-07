@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Banner from "./Banner";
 import Footer from "../../Pages/Shared/Footer";
+import ScrollToTop from "../Shared/ScrollToTop";
 const Tools = React.lazy(() => import("./Tools"));
 const Contact = React.lazy(() => import("./Contact"));
 const Reviews = React.lazy(() => import("./Reviews"));
@@ -38,6 +39,7 @@ const Home = () => {
       <Suspense fallback={<></>}>
         <Contact />
       </Suspense>
+      <ScrollToTop/>
       <Footer />
     </div>
   );

@@ -15,7 +15,7 @@ const Tools = () => {
     <section className="container">
       <h2 className="--heading">Products</h2>
       <div className="flex flex-wrap justify-center gap-5">
-        {products.map((product) => (
+        {products.slice(0, 6).map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </div>

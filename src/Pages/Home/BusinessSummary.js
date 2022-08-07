@@ -7,7 +7,7 @@ import { FaTools } from "react-icons/fa";
 
 const BusinessSummary = () => {
   return (
-    <section className="mx-auto w-full">
+    <section className="mx-auto w-full container">
       <h2 className="--heading">Business Summary</h2>
       <div className="grid grid-cols-1 gap-8 bg-primary md:grid-cols-3">
         {/* Customers */}

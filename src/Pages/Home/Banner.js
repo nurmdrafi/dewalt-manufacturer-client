@@ -8,10 +8,11 @@ const Banner = () => {
     minHeight: "100vh",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
+    backgroundSize: "cover",
   };
 
   return (
-    <section className="hero min-h-screen max-w-full" style={BannerBackground}>
+    <section id="top" className="hero min-h-screen" style={BannerBackground}>
       <div className="hero-content flex-col">
         <div>
           <h1 className="text-5xl font-bold uppercase text-white">
@@ -23,9 +24,9 @@ const Banner = () => {
             regulations.
           </p>
           <Link to="/products">
-          <button className="btn rounded-none border-0 bg-primary text-black hover:border-primary hover:text-white ">
-            Get Started
-          </button>
+            <button className="btn rounded-none border-0 bg-primary text-black hover:border-primary hover:text-white ">
+              Get Started
+            </button>
           </Link>
         </div>
       </div>
