@@ -9,7 +9,7 @@ import logo3 from "../../assets/images/portfolio-logo-3.png";
 
 const Blogs = () => {
   return (
-    <section className="mt-16 container">
+    <section className="mx-auto w-full">
       <h2 className="--heading">Blogs</h2>
       {/* portfolio 1 */}
       <div className="flex w-full flex-col md:flex-row">

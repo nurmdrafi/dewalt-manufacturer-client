@@ -111,9 +111,9 @@ const Login = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col">
+    <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="my-auto flex items-center justify-center">
+      <div className="my-8 flex min-h-[calc(100vh-200px)] items-center justify-center">
         <div className="card w-96 bg-base-100 drop-shadow-lg">
           <div className="card-body items-center text-center">
             <h2 className="card-title">Log In</h2>

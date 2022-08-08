@@ -126,7 +126,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="my-16 flex items-center justify-center">
+      <div className="my-8 flex min-h-[calc(100vh-200px)] items-center justify-center">
         <Toaster position="top-right" reverseOrder={false} />
         <div className="card w-96 bg-base-100 drop-shadow-lg">
           <div className="card-body items-center text-center">

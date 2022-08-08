@@ -18,7 +18,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-white container">
+    <section id="contact" className="bg-white w-full">
       <Toaster position="top-right" reverseOrder={false} />
       <h2 className="--heading pt-10">Contact Us</h2>
       <div className="grid grid-flow-row md:grid-flow-col md:grid-cols-2">
