@@ -44,34 +44,38 @@ const Payment = () => {
   }
 
   return (
-    <div className="flex h-[90vh] flex-col justify-between">
-      <div className="my-16 flex flex-col items-center">
-        <div className="card my-12 w-[400px] bg-base-100 shadow-xl">
-          <div className="card-body">
-            <p className="font-bold text-success">Hello, {product?.userName}</p>
-            <h2 className="card-title">
-              Please Pay for {product?.productName}
-            </h2>
-            <p>
-              <span className="font-semibold">Total Amount</span>: $
-              {product?.price}
-            </p>
-          </div>
-        </div>
-        {product && (
-          <div className="card w-[400px] bg-base-100 shadow-2xl">
+    <div>
+      <div className="mb-16  flex min-h-[calc(100vh-200px)] flex-col items-center justify-center">
+        <div className="mb-8">
+          <div className="card my-12 w-[400px] bg-base-100 shadow-xl">
             <div className="card-body">
-              <Elements stripe={stripePromise}>
-                <CheckoutForm product={product} />
-              </Elements>
+              <p className="font-bold text-success">
+                Hello, {product?.userName}
+              </p>
+              <h2 className="card-title">
+                Please Pay for {product?.productName}
+              </h2>
+              <p>
+                <span className="font-semibold">Total Amount</span>: $
+                {product?.price}
+              </p>
             </div>
           </div>
-        )}
+          {product && (
+            <div className="card w-[400px] bg-base-100 shadow-2xl">
+              <div className="card-body">
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm product={product} />
+                </Elements>
+              </div>
+            </div>
+          )}
+        </div>
+        <p className="mb-5 text-center font-bold text-gray-600">
+          Test Card Number: 4242 4242 4242 4242
+          <br />
+        </p>
       </div>
-      <p className="text-center mb-5 text-gray-600 font-bold">
-       Test Card Number: 4242 4242 4242 4242
-        <br />
-      </p>
       <Footer />
     </div>
   );
