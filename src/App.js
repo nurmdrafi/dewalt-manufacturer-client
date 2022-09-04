@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -29,127 +29,39 @@ function App() {
       <div className="bg-primary">
         <Navbar />
       </div>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="home" element={<Home />}></Route>
-        <Route
-          path="blogs"
-          element={
-            <Suspense fallback={<></>}>
-              <Blogs />
-            </Suspense>
-          }
-        ></Route>
-        <Route
-          path="products"
-          element={
-            <Suspense fallback={<></>}>
-              <Products />
-            </Suspense>
-          }
-        ></Route>
-        <Route
-          path="purchase/:_id"
-          element={
-            <RequireAuth>
-              <Suspense fallback={<></>}>
-                <Purchase />
-              </Suspense>
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="payment/:_id"
-          element={
-            <Suspense fallback={<></>}>
-              <Payment />
-            </Suspense>
-          }
-        ></Route>
-        <Route
-          path="dashboard"
-          element={
-            <Suspense fallback={<></>}>
-              <Dashboard />
-            </Suspense>
-          }
-        >
-          {/* Nested Routes */}
-          <Route
-            index
-            element={
-              <Suspense fallback={<></>}>
-                <MyProfile />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="my-order"
-            element={
-              <Suspense fallback={<></>}>
-                <MyOrders />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="add-review"
-            element={
-              <Suspense fallback={<></>}>
-                <AddReview />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="make-admin"
-            element={
-              <Suspense fallback={<></>}>
-                <MakeAdmin />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="manage-orders"
-            element={
-              <Suspense fallback={<></>}>
-                <ManageOrders />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="add-product"
-            element={
-              <Suspense fallback={<></>}>
-                <AddProduct />
-              </Suspense>
-            }
-          ></Route>
-          <Route
-            path="manage-products"
-            element={
-              <Suspense fallback={<></>}>
-                <ManageProducts />
-              </Suspense>
-            }
-          ></Route>
-        </Route>
-        <Route
-          path="login"
-          element={
-            <Suspense fallback={<></>}>
-              <Login />
-            </Suspense>
-          }
-        ></Route>
-        <Route
-          path="register"
-          element={
-            <Suspense fallback={<></>}>
-              <Register />
-            </Suspense>
-          }
-        ></Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="home" element={<Home />}></Route>
+            <Route path="blogs" element={<Blogs />}></Route>
+            <Route path="products" element={<Products />}></Route>
+            <Route
+              path="purchase/:_id"
+              element={
+                <RequireAuth>
+                  <Purchase />
+                </RequireAuth>
+              }
+            ></Route>
+            <Route path="payment/:_id" element={<Payment />}></Route>
+            <Route path="dashboard" element={<Dashboard />}>
+              {/* Nested Routes */}
+              <Route index element={<MyProfile />}></Route>
+              <Route path="my-order" element={<MyOrders />}></Route>
+              <Route path="add-review" element={<AddReview />}></Route>
+              <Route path="make-admin" element={<MakeAdmin />}></Route>
+              <Route path="manage-orders" element={<ManageOrders />}></Route>
+              <Route path="add-product" element={<AddProduct />}></Route>
+              <Route
+                path="manage-products"
+                element={<ManageProducts />}
+              ></Route>
+            </Route>
+            <Route path="login" element={<Login />}></Route>
+            <Route path="register" element={<Register />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </Suspense>
     </div>
   );
 }
