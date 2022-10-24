@@ -2,16 +2,15 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  useCreateUserWithEmailAndPassword,
+  useSignInWithEmailAndPassword,
   useSignInWithGoogle,
-  useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
-import useToken from "../../hooks/useToken";
+import auth from "../firebase.init";
+import useToken from "../hooks/useToken";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../../Pages/Shared/Footer";
+import Footer from "../components/Shared/Footer";
 
-const Register = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
@@ -25,19 +24,16 @@ const Register = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  // Create User With Email and Password
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
-
-  // Update Profile
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  // Sign In With Email and Password
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   // Sign In With Google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  // Handle Registration
-  const handleRegistration = async (data) => {
+  // Handle Login
+  const handleLogin = async (data) => {
     // Check White Space
     if (!/^\S*$/.test(data.password)) {
       setError("password", {
@@ -81,20 +77,15 @@ const Register = () => {
         type: "length",
         message: "Your password must be 10-16 Characters Long",
       });
-    } else if (data.password !== data.confirmPassword) {
-      setError("confirmPassword", {
-        type: "match",
-        message: "Please confirm your password",
-      });
     } else {
-      await createUserWithEmailAndPassword(data.email, data.password);
-      await updateProfile({ displayName: data.name });
-      // await console.log(data);
+      await signInWithEmailAndPassword(data.email, data.password);
+      //   console.log(data);
       reset();
     }
   };
 
   const [token] = useToken(user || googleUser);
+
   // Navigate
   useEffect(() => {
     if (token) {
@@ -103,8 +94,8 @@ const Register = () => {
   }, [from, navigate, token]);
 
   // Loading
-  if (loading || googleLoading || updating) {
-    return <p>Loading...</p>;
+  if (loading || googleLoading) {
+    return <p className="text-center text-4xl font-bold">Loading...</p>;
   }
 
   // Error
@@ -118,54 +109,20 @@ const Register = () => {
       id: "google error",
     });
   }
-  if (updateError) {
-    toast.error(updateError.message, {
-      id: "update error",
-    });
-  }
 
   return (
     <div>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="my-8 flex min-h-[calc(100vh-200px)] items-center justify-center">
-        <Toaster position="top-right" reverseOrder={false} />
         <div className="card w-96 bg-base-100 drop-shadow-lg">
           <div className="card-body items-center text-center">
-            <h2 className="card-title">Registration</h2>
+            <h2 className="card-title">Log In</h2>
 
             {/* Form Start */}
             <form
-              onSubmit={handleSubmit(handleRegistration)}
+              onSubmit={handleSubmit(handleLogin)}
               className=" flex flex-col gap-3"
             >
-              {/* Name */}
-              <div className="form-control min-w-[350px]">
-                <label className="pb-1 text-left">Name</label>
-                <input
-                  type="text"
-                  className={`input input-bordered w-full ${
-                    errors.name && "input-error"
-                  }`}
-                  {...register("name", {
-                    required: "Please enter your name",
-                    minLength: {
-                      value: 5,
-                      message: "Please enter at least 6 characters",
-                    },
-                  })}
-                />
-                {/* Error Message */}
-                {errors.name?.type === "required" && (
-                  <p className="pt-2 text-left text-error">
-                    {errors.name.message}
-                  </p>
-                )}
-                {errors.name?.type === "minLength" && (
-                  <p className="py-2 text-left text-error">
-                    {errors.name.message}
-                  </p>
-                )}
-              </div>
-
               {/* Email */}
               <div className="form-control min-w-[350px]">
                 <label className="pb-1 text-left">Email</label>
@@ -245,47 +202,55 @@ const Register = () => {
                 )}
               </div>
 
-              {/* Confirm Password */}
-              <div className="form-control min-w-[350px]">
-                <label className="pb-1 text-left">Confirm Password</label>
-                <input
-                  type="text"
-                  className={`input input-bordered w-full ${
-                    errors.confirmPassword && "input-error"
-                  }`}
-                  {...register("confirmPassword")}
-                />
-                {/* Error Message */}
-                {errors.confirmPassword?.type === "match" && (
-                  <p className="py-2 text-left text-error">
-                    {errors.confirmPassword.message}
-                  </p>
-                )}
-              </div>
-
               {/* Login Button */}
               <button
                 type="submit"
                 className="btn btn-primary min-w-[350px] uppercase"
               >
-                Register
+                Log In
               </button>
             </form>
             {/* Form End */}
 
             <p>
-              Already have an account?{" "}
+              New to DeWalt?{" "}
               <Link
-                to="/login"
+                to="/register"
                 className="font-semibold text-secondary underline"
               >
-                Log In Here
+                Create New Account
               </Link>
             </p>
 
             {/* Divider */}
             <div className="flex w-full flex-col border-opacity-50">
-              <div className="divider">OR</div>
+              <div className="divider my-1">OR</div>
+            </div>
+
+            {/* Demo login*/}
+
+            <div className="flex space-x-4">
+              <button
+                className="btn btn-outline btn-sm lowercase"
+                onClick={() =>
+                  signInWithEmailAndPassword("user1@user.com", "User@12345")
+                }
+              >
+                Demo User
+              </button>
+              <button
+                className="btn btn-outline  btn-sm lowercase"
+                onClick={() =>
+                  signInWithEmailAndPassword("admin@admin.com", "Admin@12345")
+                }
+              >
+                Demo Admin
+              </button>
+            </div>
+
+            {/* Divider */}
+            <div className="flex w-full flex-col border-opacity-50">
+              <div className="divider my-1">OR</div>
             </div>
 
             {/* Google Button */}
@@ -303,4 +268,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

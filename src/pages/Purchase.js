@@ -1,13 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { signOut } from "firebase/auth";
-import auth from "../../firebase.init";
+import auth from "../firebase.init";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "../Shared/Footer";
+import Footer from "../components/Shared/Footer";
 
 const customStyles = {
   content: {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Product from "../Home/Product";
-import Footer from "../Shared/Footer";
+import Product from "../components/Home/Product";
+import Footer from "../components/Shared/Footer";
 
 const Products = () => {
   const { isLoading, data: products } = useQuery("products", () =>
@@ -14,7 +14,7 @@ const Products = () => {
   }
   return (
     <div>
-      <div className="max-w-7xl mx-auto my-16">
+      <div className="mx-auto my-16 max-w-7xl">
         <h2 className="--heading">Products</h2>
         <div className="flex flex-wrap justify-center gap-5">
           {products.map((product) => (

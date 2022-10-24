@@ -1,13 +1,17 @@
 import React, { Suspense } from "react";
-import Banner from "./Banner";
-import Footer from "../../Pages/Shared/Footer";
-import ScrollToTop from "../Shared/ScrollToTop";
-const Tools = React.lazy(() => import("./Tools"));
-const Contact = React.lazy(() => import("./Contact"));
-const Reviews = React.lazy(() => import("./Reviews"));
-const BusinessSummary = React.lazy(() => import("./BusinessSummary"));
-const Blogs = React.lazy(() => import("./Blogs"));
-const CreateAccount = React.lazy(() => import("./CreateAccount"));
+import Banner from "../components/Home/Banner";
+import Footer from "../components/Shared/Footer";
+import ScrollToTop from "../components/Shared/ScrollToTop";
+const Tools = React.lazy(() => import("../components/Home/Tools"));
+const Contact = React.lazy(() => import("../components/Home/Contact"));
+const Reviews = React.lazy(() => import("../components/Home/Reviews"));
+const BusinessSummary = React.lazy(() =>
+  import("../components/Home/BusinessSummary")
+);
+const Blogs = React.lazy(() => import("../components/Home/Blogs"));
+const CreateAccount = React.lazy(() =>
+  import("../components/Home/CreateAccount")
+);
 /* 
 
 // const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -39,7 +43,7 @@ const Home = () => {
       <Suspense fallback={<></>}>
         <Contact />
       </Suspense>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Footer />
     </div>
   );

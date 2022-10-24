@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import ReviewCard from "./ReviewCard";
+import ReviewCard from "../../components/Home/ReviewCard";
 
 const Reviews = () => {
   const { isLoading, data: reviews } = useQuery("reviews", () =>

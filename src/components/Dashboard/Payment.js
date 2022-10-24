@@ -5,8 +5,8 @@ import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
-import Footer from "../../Pages/Shared/Footer";
+import CheckoutForm from "../../components/Dashboard/CheckoutForm";
+import Footer from "../../components/Shared/Footer";
 
 const stripePromise = loadStripe(
   "pk_test_51L3eBnFxrq41hmwKbaVBe8In817a4jZNNny9EL2pEPBUX61ydtvWf6uy5SqUIZbrWR2Hoasv113XoPHhry9hOa0r005ZmYjqLd"

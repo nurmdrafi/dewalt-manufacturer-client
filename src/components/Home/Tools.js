@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Product from "./Product";
+import Product from "../../components/Home/Product";
 
 const Tools = () => {
   const { isLoading, data: products } = useQuery("products", () =>

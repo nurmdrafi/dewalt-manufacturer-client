@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../Shared/Footer";
+import Footer from "../components/Shared/Footer";
 
 const Blogs = () => {
   const items = [1, 2, 3, 4, 5, 6];

@@ -1,9 +1,9 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
-import auth from "../../firebase.init";
-import useAdmin from "../../hooks/useAdmin";
-import Footer from "../../Pages/Shared/Footer";
+import auth from "../firebase.init";
+import useAdmin from "../hooks/useAdmin";
+import Footer from "../components/Shared/Footer";
 import { CgProfile } from "react-icons/cg";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";

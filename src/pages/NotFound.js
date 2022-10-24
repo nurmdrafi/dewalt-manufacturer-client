@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img404 from "../../assets/images/404.jpg";
-import Footer from "../../Pages/Shared/Footer";
+import img404 from "../assets/images/404.jpg";
+import Footer from "../components/Shared/Footer";
 
 const NotFound = () => {
   return (

@@ -46,7 +46,10 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <HashLink to="home/#contact" className="font-semibold whitespace-nowrap">
+            <HashLink
+              to="home/#contact"
+              className="whitespace-nowrap font-semibold"
+            >
               Contact Us
             </HashLink>
           </li>
@@ -59,7 +62,10 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <HashLink to="home/#contact" className="font-semibold whitespace-nowrap">
+            <HashLink
+              to="home/#contact"
+              className="whitespace-nowrap font-semibold"
+            >
               Contact Us
             </HashLink>
           </li>
