@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   const MenuItems = (
-    <>
+    <React.Fragment>
       <li>
         <Link to="/home" className="font-semibold">
           Home
@@ -39,7 +39,7 @@ const Navbar = () => {
         </Link>
       </li>
       {user ? (
-        <>
+        <React.Fragment>
           <li>
             <Link to="/dashboard" className="font-semibold">
               Dashboard
@@ -58,9 +58,9 @@ const Navbar = () => {
               Sign Out
             </button>
           </li>
-        </>
+        </React.Fragment>
       ) : (
-        <>
+        <React.Fragment>
           <li>
             <HashLink
               to="home/#contact"
@@ -74,9 +74,9 @@ const Navbar = () => {
               Login
             </Link>
           </li>
-        </>
+        </React.Fragment>
       )}
-    </>
+    </React.Fragment>
   );
   return (
     <nav className="navbar relative mx-auto flex max-w-7xl justify-between bg-primary">
@@ -122,7 +122,7 @@ const Navbar = () => {
       </div>
       {/* Dashboard Sidebar */}
       {user && window.location.href.includes("dashboard") && (
-        <>
+        <React.Fragment>
           <div className="order-1 lg:order-none lg:hidden">
             <label
               htmlFor="dashboard-sidebar"
@@ -144,7 +144,7 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-        </>
+        </React.Fragment>
       )}
     </nav>
   );
